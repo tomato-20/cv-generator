@@ -2,7 +2,8 @@ require('dotenv').config();
 const cors = require('cors');
 const express = require('express');
 
-const databaseHelper = require('./helpers/dbHelper')
+const databaseHelper = require('./helpers/dbHelper');
+const ResponseError = require('./helpers/errors');
 const genericErrorHandler = require('./middlewere/genericErrorHandler');
 
 const app = express();
@@ -30,7 +31,8 @@ app.use('/api/v1', (req,res,next) => {
     let data = {
         api : "Welcome"
     }
-    next(new BadRequest('Hey not found'))
+    const {StatusCodes} = require('http-status-codes')
+    next(new ResponseError('Hey ladjghlahdg', StatusCodes.FORBIDDEN))
     // res.json(data)
 })  
 
