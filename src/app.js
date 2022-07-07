@@ -31,8 +31,12 @@ app.use('/api/v1', (req,res,next) => {
     let data = {
         api : "Welcome"
     }
-    const {StatusCodes} = require('http-status-codes')
-    next(new ResponseError('Hey ladjghlahdg', StatusCodes.FORBIDDEN))
+    // const {StatusCodes} = require('http-status-codes')
+    // next(new ResponseError('Hey ladjghlahdg', StatusCodes.FORBIDDEN))
+
+    const resHelper = require('./helpers/responseHelper')
+    // resHelper.successResponse('',{id : "dshfg"}, res)
+    resHelper.errorResponse(400,"message",res)
     // res.json(data)
 })  
 
