@@ -2,8 +2,10 @@ require('dotenv').config();
 const cors = require('cors');
 const express = require('express');
 
+
+const indexRouter = require('./modules/indexRouter')
+// const ResponseError = require('./helpers/errors');
 const databaseHelper = require('./helpers/dbHelper');
-const ResponseError = require('./helpers/errors');
 const genericErrorHandler = require('./middlewere/genericErrorHandler');
 
 const app = express();
@@ -27,18 +29,7 @@ app.use((req,res,next)=>{
   next();
 })
 
-app.use('/api/v1', (req,res,next) => {
-    let data = {
-        api : "Welcome"
-    }
-    // const {StatusCodes} = require('http-status-codes')
-    // next(new ResponseError('Hey ladjghlahdg', StatusCodes.FORBIDDEN))
-
-    const resHelper = require('./helpers/responseHelper')
-    // resHelper.successResponse('',{id : "dshfg"}, res)
-    resHelper.errorResponse(400,"message",res)
-    // res.json(data)
-})  
+app.use('/api/v1',indexRouter)  
 
 // 404 error
 app.use('/*', (req,res,next)=>{
