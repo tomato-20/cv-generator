@@ -34,7 +34,7 @@ app.use('/api/v1',indexRouter)
 // 404 error
 app.use('/*', (req,res,next)=>{
     res.status(404).json({
-        msgt: `Cannot ${req.method} ${req.url} Not found`
+        message: `Cannot ${req.method}. ${req.originalUrl} Not found`
     })
 })
 

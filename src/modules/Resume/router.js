@@ -1,9 +1,7 @@
 const router = require('express').Router();
 
-router.use('/create',(req,res,next)=>{
-    res.json({
-        message:"POST create resume"
-    })
-})
+const insertResumeController = require('./insert')
+
+router.use('/',insertResumeController)
 
 module.exports = router;
