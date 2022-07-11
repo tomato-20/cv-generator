@@ -1,35 +1,34 @@
 const jwt = require("jsonwebtoken");
-
+const responseHelper = require("../../helpers/responseHelper");
+const { compare } = require("./helpers/compare-password");
 
 exports.login = async (req, res, next) => {
   let isPasswordValid = false;
+  const { Email, Password} = req.body;
   try {
-    const existedUser = await req.db.collection("users").findOne({ email });
+    const existedUser = await req.db.collection("users").findOne({ Email });
 
     if (existedUser) {
-      isPasswordValid = await compare(password, existedUser.password);
+      isPasswordValid = await compare(Password, existedUser.Password);
     }
     if (!existedUser || !isPasswordValid)
-      throw new Error("Invalid credentials");
+      return responseHelper.errorResponse(res, "Invalid credentials");
 
-    const oldToken = await db.collection("token").findOne({ email });
+    const oldToken = await req.db.collection("token").findOne({ Email });
 
     //to create a token
-    const token = jwt.sign(
-      { email, role: users.role },
-      process.env.SECRET /*,{expiresIn: "1hr"}*/
-    );
+    const token = jwt.sign({ Email }, process.env.SECRET);
 
     // save user in db
     if (oldToken) {
-      let updatetedUser = await db
+      let updatetedUser = await req.db
         .collection("token")
         .updateOne({ token: oldToken.token }, { $set: { token } });
     } else {
-      await db.collection("token").insertOne({ email, token });
-    }
+      await req.db.collection("token").insertOne({ Email, token });
 
-    return { sucess: true, messsge: "Logged in sucessfully", token };
+      return responseHelper.successResponse(res, "User logged in", { token });
+    }
   } catch (error) {
     throw error;
   }

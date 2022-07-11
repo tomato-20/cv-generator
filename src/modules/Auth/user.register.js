@@ -36,9 +36,9 @@ exports.createUser = async (req, res, next) => {
         const userDbInsertResponse = await req.db.collection("users").insertOne(userPreparedInsertData);
 
         if(checkInsert(userDbInsertResponse)){
-            return responseHelper.sucessResponse(res, "User registered sucessfully")
+            return responseHelper.successResponse(res, "User registered sucessfully")
         }
-        return responseHelper.sucessResponse(res,  "User registration failed")
+        return responseHelper.errorResponse(res,  "User registration failed")
 
     } catch (error) {
         console.log(error)
