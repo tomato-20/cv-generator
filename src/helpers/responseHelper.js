@@ -2,7 +2,7 @@
 
     const {StatusCodes} = require('http-status-codes')
 
-    ResponseHelper.successResponse = (message, data, res) => {
+    ResponseHelper.successResponse = (res, message, data ) => {
         return res.status(StatusCodes.OK).json({
             success: true,
             data,
@@ -11,7 +11,7 @@
     },
 
 
-    ResponseHelper.errorResponse = (status, message, res) => {
+    ResponseHelper.errorResponse = ( res, message, status) => {
         return res.status(status || StatusCodes.BAD_REQUEST).json({
             success: false,
             message: message || "Error message"

@@ -10,7 +10,13 @@ const genericErrorHandler = require('./middlewere/genericErrorHandler');
 
 const app = express();
 
+//db collection
 databaseHelper.init(app);
+app.use((req, res, next) => {
+  req.db = app.locals.db;
+
+  next();
+});
 
 app.options('*',cors());
 app.use(cors())

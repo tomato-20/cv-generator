@@ -6,7 +6,7 @@
     const { MongoClient, ServerApiVersion } = require('mongodb');
     
     const dbConfig = require('../config/db.config.js')
-    const uri = dbConfig.MONGODB_URI;
+    const uri = "mongodb+srv://ek:326596@customerapi1.p3ivs.mongodb.net/Customerdb?retryWrites=true&w=majority";
 
     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
@@ -17,7 +17,7 @@
             if (err) console.log("Database Connection Error", err)
 
             // const collection = client.db("test").collection("devices");
-            app.locals.db = client.db("cv-template");
+            app.locals.db = client.db("CV-Data");
 
             // perform actions on the collection object
             console.log("Database Connection Success")
