@@ -10,7 +10,7 @@ const genericErrorHandler = require('./middlewere/genericErrorHandler');
 
 const app = express();
 
-databaseHelper.init(app);
+databaseHelper.init(app)
 
 app.options('*',cors());
 app.use(cors())
