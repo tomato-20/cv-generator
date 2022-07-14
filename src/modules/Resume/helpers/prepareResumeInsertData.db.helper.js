@@ -43,7 +43,7 @@ const prepareEducationInsertData = (data, userId) => {
                 course : element?.course,
                 startDate : element?.startDate,
                 endDate : element?.endDate,
-                createdAt: new Date(),
+                created: new Date(),
                 createdBy: userId,
                 updatedAt: null,
             }
@@ -63,7 +63,7 @@ const prepareCertificationsInsertData = (data, userId) => {
                 course : element?.course,
                 startDate : element?.startDate,
                 endDate : element?.endDate,
-                createdAt: new Date(),
+                created: new Date(),
                 createdBy: userId,
                 updatedAt: null,
             }
@@ -86,7 +86,7 @@ const prepareExperiencesInsertData = (data, userId) => {
                 description: element?.description,
                 startDate : element?.startDate,
                 endDate : element?.endDate,
-                createdAt: new Date(),
+                created: new Date(),
                 createdBy: userId,
                 updatedAt: null,
             }
@@ -105,7 +105,7 @@ const prepareSkillInsertData = (data, userId) => {
                industryKnowledge: data?.industryKnowledge,
                programmingSkills : data?.programmingSkills,
                tools : data?.tools,
-                createdAt: new Date(),
+                created: new Date(),
                 createdBy: userId,
                 updatedAt: null,
             }

@@ -1,7 +1,7 @@
 require('dotenv').config();
 const cors = require('cors');
 const express = require('express');
-const path = require('path')
+
 
 const indexRouter = require('./modules/indexRouter')
 // const ResponseError = require('./helpers/errors');
@@ -20,10 +20,6 @@ app.use(express.json());
 app.use(express.urlencoded({
   extended : false
 }))
-
-app.set('view engine','ejs')
-app.set(express.static('../public/'))
-app.set('views',path.join(__dirname + "/views"))
 
 // logging request in console
 app.use((req,res,next)=>{
