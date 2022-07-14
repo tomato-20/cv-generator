@@ -1,5 +1,4 @@
 ((ResponseHelper) => {
-
     const { StatusCodes } = require('http-status-codes')
 
     ResponseHelper.successResponse = (res, message, data) => {
