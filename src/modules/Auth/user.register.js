@@ -1,46 +1,62 @@
 const jwt = require("jsonwebtoken");
-const bcrypt =  require("bcrypt");
+const bcrypt = require("bcrypt");
 const responseHelper = require("../../helpers/responseHelper");
-const {prepareInsertData} = require("./helpers/data-process.db.helper");
+const { prepareInsertData } = require("./helpers/data-process.db.helper");
+const uuid = require("uuid");
 
-const checkInsert = (user)=>{
-    try {
-        return !!user?.insertedId
-    } catch (error) {
-        throw error;
-    }
-}
+const checkInsert = (user) => {
+  try {
+    return !!user?.insertedId;
+  } catch (error) {
+    throw error;
+  }
+};
 
 //register user
 exports.createUser = async (req, res, next) => {
-    try {
-        const {Fullname, Email, Password, Phone, Address} = req.body;
-         
-        //to validate
-        if(!(Fullname && Email && Password && Phone && Address)) {
-            
-            return responseHelper.errorResponse(res, "Input is required!!", 400)
-        }
+  try {
+    const { fullname, email, password, phone, address } = req.body;
 
-        //to check if user already exist in db
-        const oldUser = await req.db.collection("users").findOne({Email});
-        if (oldUser) {
-            return  responseHelper.errorResponse(res, "User already exist. Please Login!!", 400)
-        }
-
-        //to generate hass password
-        encryptedPassword = await bcrypt.hash(Password, 10);
-
-        const userPreparedInsertData = prepareInsertData({data:req.body, encryptedPassword, userId:null})
-        //to save user in db
-        const userDbInsertResponse = await req.db.collection("users").insertOne(userPreparedInsertData);
-
-        if(checkInsert(userDbInsertResponse)){
-            return responseHelper.successResponse(res, "User registered sucessfully")
-        }
-        return responseHelper.errorResponse(res,  "User registration failed")
-
-    } catch (error) {
-        console.log(error)
+    //to validate
+    if (!(fullname && email && password && phone && address)) {
+      return responseHelper.errorResponse(res, "Input is required!!", 400);
     }
-}
+
+    //to check if user already exist in db
+    const oldUser = await req.db.collection("users").findOne({ email });
+    if (oldUser) {
+      return responseHelper.errorResponse(
+        res,
+        "User already exist. Please Login!!",
+        400
+      );
+    }
+
+    //to generate hass password
+    encryptedPassword = await bcrypt.hash(password, 10);
+
+    const userPreparedInsertData = prepareInsertData({
+      data: req.body,
+      encryptedPassword,
+      userId: null,
+    });
+    //to save user in db
+    const userDbInsertResponse = await req.db
+      .collection("users")
+      .insertOne(userPreparedInsertData);
+
+    if (checkInsert(userDbInsertResponse)) {
+      //creating resume table
+      const userResume = await req.db.collection("user_resume").insertOne({
+        userId: userPreparedInsertData._id,
+        resumeId: uuid.v4(),
+        selected: null,
+      });
+      return responseHelper.successResponse(res, "User registered sucessfully");
+    }
+
+    return responseHelper.errorResponse(res, "User registration failed");
+  } catch (error) {
+    console.log(error);
+  }
+};
