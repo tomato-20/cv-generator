@@ -46,14 +46,14 @@ exports.createUser = async (req, res, next) => {
       .insertOne(userPreparedInsertData);
 
     if (checkInsert(userDbInsertResponse)) {
+      //creating resume table
+      const userResume = await req.db.collection("user_resume").insertOne({
+        userId: userPreparedInsertData._id,
+        resumeId: uuid.v4(),
+        selected: null,
+      });
       return responseHelper.successResponse(res, "User registered sucessfully");
     }
-    //creating resume table
-    const userResume = await req.db.collection("user_resume").insertOne({
-      userId,
-      resumeId: uuid,
-      selected: 100,
-    });
 
     return responseHelper.errorResponse(res, "User registration failed");
   } catch (error) {
