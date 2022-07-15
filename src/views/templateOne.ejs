@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV 1</title>
+  <!-- <link rel="stylesheet" href="style.css"> -->
+  <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,500;1,300;1,500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;900&display=swap" rel="stylesheet">
+</head>
+<style>
+  *,
+  body {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    font-family: 'Lato', sans-serif;
+  }
+
+  body {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    color: #DB9291;
+  }
+
+  .container {
+    padding: 40px;
+    max-width: 595px;
+    height: 947px;
+    overflow-x: hidden;
+    border: 1px red solid;
+  }
+
+  header {
+    margin-bottom: 24px;
+  }
+
+  header .profile-info {
+    margin-bottom: 24px;
+  }
+
+  header .profile-info__top {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 24px;
+    margin-bottom: 16px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+
+  header .profile-info__top img {
+    border-radius: 50%;
+    height: 72px;
+    width: 72px;
+  }
+
+  header .profile-info__top .top-right {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  header .profile-info__top--name {
+    font-size: 30px;
+    font-weight: medium;
+    font-family: 'Spectral', serif;
+  }
+
+  header .profile-info__top--role {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-family: 'Lato', sans-serif;
+    font-weight: black;
+    color: #DB9291;
+  }
+
+  header .profile-info__bot {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 16px;
+    font-family: 'Lato', sans-serif;
+  }
+
+  header .profile-info__bot div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 4px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 10px;
+    color: #242424;
+    font-weight: light;
+  }
+
+  header .profile-intro {
+    background-color: #F5F5F5;
+    padding: 1rem;
+    border-radius: 20px;
+    font-size: 14px;
+    font-family: 'Spectral', serif;
+    font-weight: 300;
+  }
+
+  main .experience {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  main .experience .experience-start {
+    border-bottom: 1px #EDEDED solid;
+    padding-bottom: 12px;
+  }
+
+  main .experience .experience-start__top {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  main .experience .experience-start__top h2 {
+    color: #2D3E5B;
+    font-size: 1rem;
+    font-style: italic;
+    font-weight: 500;
+    font-family: 'Spectral', serif;
+  }
+
+  main .experience .experience-start__top div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 10px;
+  }
+
+  main .experience .experience-start__top span {
+    padding-right: 4px;
+  }
+
+  main .experience .experience-start__mid {
+    margin-left: 14px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  main .experience .experience-start__mid ul li {
+    font-size: 10px;
+    font-weight: 400;
+  }
+
+  main .experience .experience-start__mid div span {
+    font-size: 10px;
+    font-weight: 400;
+  }
+
+  main .experience .experience-start__mid p {
+    font-size: 10px;
+  }
+
+  main .others {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  main .others .skills {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  main .others .skills h3 {
+    font-size: 14px;
+    color: #2D3E5B;
+    font-weight: 600;
+    font-style: italic;
+    font-weight: 500;
+    font-family: 'Spectral', serif;
+  }
+
+  main .others .skills p {
+    font-size: 12px;
+  }
+
+  main .others .skills__1,
+  main .others .skills__2,
+  main .others .skills__3 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  main .others .education {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  main .others .education h3 {
+    font-size: 14px;
+    color: #2D3E5B;
+    font-weight: 600;
+    font-style: italic;
+    font-weight: 500;
+    font-family: 'Spectral', serif;
+  }
+
+  main .others .education__1,
+  main .others .education__2,
+  main .others .education__3 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  main .others .education__1 .botpart,
+  main .others .education__2 .botpart,
+  main .others .education__3 .botpart {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    gap: 4px;
+  }
+
+  main .others .education__1 .botpart div,
+  main .others .education__2 .botpart div,
+  main .others .education__3 .botpart div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    font-size: 10px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+
+  main .others .education__1 .botpart span,
+  main .others .education__2 .botpart span,
+  main .others .education__3 .botpart span {
+    padding-right: 4px;
+  }
+
+  /*# sourceMappingURL=style.css.map */
+</style>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="profile-info">
+        <div class="profile-info__top">
+          <img
+            src="https://images.unsplash.com/photo-1610276198568-eb6d0ff53e48?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80"
+            alt="person-image" />
+
+          <div class="top-right">
+            <div class="profile-info__top--name"> Sujana Shrestha</div>
+            <div class="profile-info__top--role"> product designer (ui/ux)</div>
+          </div>
+        </div>
+
+        <div class="profile-info__bot">
+
+          <div><span><i class='bx bx-envelope'></i></span>Email@gmail.com</div>
+          <div><span><i class='bx bx-link'></i></span>www.suz.com</div>
+          <div><span><i class='bx bxl-linkedin'></i></span>Sujan Shrestha</div>
+          <div><span><i class='bx bxl-instagram'></i></span>Sujan Shrestha</div>
+        </div>
+      </div>
+
+      <div class="profile-intro">
+        I'm a Product Designer , based in L.A and focused on Fintech Startups.
+        Use this block to introduce yourself. Tell the world what you do and why they should care.
+      </div>
+    </header>
+
+    <main>
+      <section class="experience">
+        <h1>experience</h1>
+        <div class="experience-start">
+          <div class="experience-start__top">
+            <h2>Product Designer</h2>
+            <div><span><i class='bx bx-buildings'></i></span> Company</div>
+            <div> <span><i class='bx bx-calendar'></i></span> Mars 2021 - Currently</div>
+          </div>
+
+          <div class="experience-start__mid">
+            <div>
+              <ul>
+                <li>Conducted user interviews, surveys, competitive analysis, and market research.</li>
+                <li>Conducted user interviews, surveys, competitive analysis, and market research.</li>
+                <li>Conducted user interviews, surveys, competitive analysis, and market research.</li>
+                <li>Conducted user interviews, surveys, competitive analysis, and market research.</li>
+                <li>Conducted user interviews, surveys, competitive analysis, and market research.</li>
+                <li>Conducted user interviews, surveys, competitive analysis, and market research.</li>
+                <li>Conducted user interviews, surveys, competitive analysis, and market research.</li>
+                <li>Conducted user interviews, surveys, competitive analysis, and market research.</li>
+                <li>Conducted user interviews, surveys, competitive analysis, and market research.</li>
+                <li>Conducted user interviews, surveys, competitive analysis, and market research.</li>
+                <li>Conducted user interviews, surveys, competitive analysis, and market research.</li>
+                <li>Conducted user interviews, surveys, competitive analysis, and market research.</li>
+              </ul>
+            </div>
+            <div><span>Summary</span>
+              <p>Responsible for designing the look and feel for the updated website which increased the traffic by 40%,
+                page views by 60% and average session time by 90%.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="experience-start">
+          <div class="experience-start__top">
+            <h2>Product Designer</h2>
+            <div><span><i class='bx bx-buildings'></i></span> Company</div>
+            <div> <span><i class='bx bx-calendar'></i></span> Mars 2021 - Currently</div>
+          </div>
+
+          <div class="experience-start__mid">
+            <div>
+              <ul>
+                <li>Conducted user interviews, surveys, competitive analysis, and market research.</li>
+                <li>Conducted user interviews, surveys, competitive analysis, and market research.</li>
+                <li>Conducted user interviews, surveys, competitive analysis, and market research.</li>
+                <li>Conducted user interviews, surveys, competitive analysis, and market research.</li>
+              </ul>
+            </div>
+            <div>Summary</div>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="others">
+        <div class="skills">
+          <h1>skills</h1>
+          <div class="skills__1">
+            <h3>Ux Design</h3>
+            <p>Data analysis, User Research, User testing, Teamwork, Wireframing, Prototyping.</p>
+          </div>
+          <div class="skills__2">
+            <h3>Tools</h3>
+            <p>Figma, Stark, Figjam, Protopie, Maze, Webflow, Slack, Zeplin, Wordpress.</p>
+          </div>
+          <div class="skills__3">
+            <h3>Languages</h3>
+            <p>Spanish and English.</p>
+          </div>
+        </div>
+        <div class="education">
+          <h1>education</h1>
+          <div class="education__1">
+            <h3>Course in UX Research</h3>
+            <div class="botpart">
+              <div><span><i class='bx bx-buildings'></i></span> education platform</div>
+              <div><span><i class='bx bx-calendar'></i></span> 2022</div>
+            </div>
+          </div>
+          <div class="education__2">
+            <h3>Course in UX Research</h3>
+            <div class="botpart">
+              <div><span><i class='bx bx-buildings'></i></span> education platform</div>
+              <div><span><i class='bx bx-calendar'></i></span> 2022</div>
+            </div>
+          </div>
+          <div class="education__3">
+            <h3>Course in UX Research</h3>
+            <div class="botpart">
+              <div><span><i class='bx bx-buildings'></i></span> education platform</div>
+              <div><span><i class='bx bx-calendar'></i></span> 2022</div>
+            </div>
+          </div>
+        </div>
+  </div>
+  </section>
+  </main>
+
+  </div>
+
+</body>
+
+</html>

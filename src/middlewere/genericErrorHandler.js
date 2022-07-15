@@ -1,8 +1,6 @@
 const customErrors = require('../helpers/errors')
 
 module.exports = (err, req, res, next) => {
-
-    
     if (
         err instanceof customErrors
         ) {

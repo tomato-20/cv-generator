@@ -1,7 +1,11 @@
 const router = require('express').Router();
 
-const insertResumeController = require('./insert')
+const insertResumeController = require('./controllers/insert')
+const getPdfController = require('./controllers/getPdf')
+const authMiddlewere = require('../../middlewere/authMiddlewere');
 
-router.use('/',insertResumeController)
+router.post('/',insertResumeController)
+
+router.get('/getPdf', authMiddlewere, getPdfController)
 
 module.exports = router;

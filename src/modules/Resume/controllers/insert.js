@@ -1,5 +1,5 @@
-const resHelper = require('../../helpers/responseHelper');
-const [validateResumeInsert] = require('./validation/resumeInsertValidation')
+const resHelper = require('../../../helpers/responseHelper');
+const [validateResumeInsert] = require('../validation/resumeInsertValidation')
 const {
     prepareBasicInfoData,
     prepareEducationInsertData,
@@ -7,7 +7,7 @@ const {
     prepareExperiencesInsertData,
     prepareSkillInsertData,
     prepareUserProfilesInsertData
-} = require('./helpers/prepareResumeInsertData.db.helper')
+} = require('../helpers/prepareResumeInsertData.db.helper')
 
 const insertResume = async (req, res, next) => {
     const Users = req.db.collection('users');
@@ -16,6 +16,7 @@ const insertResume = async (req, res, next) => {
     const Profiles = req.db.collection('profiles');
     const Certifications = req.db.collection('certifications')
     const Skills = req.db.collection('skills');
+    const User_Resume = req.db.collection('user_resume')
     const { userId, ...resumeInsertData } = req.body;
     let promises = []
 
@@ -28,6 +29,8 @@ const insertResume = async (req, res, next) => {
 
         let existUser = await Users?.findOne({ _id: userId });
         if (!existUser) return resHelper.errorResponse(res, 'User Doesnot Exist!', 400)
+
+        let selectedTemplate = await 
 
         // insert basic info into database
         let basicInfoData = { role: resumeInsertData.role, summary: resumeInsertData.summary, website: resumeInsertData.website }
