@@ -4,11 +4,11 @@ const prepareInsertData = ({data,encryptedPassword, userId}) => {
     try {
         return {
             _id:uuid.v4(),
-            Fullname:data.Fullname,
-            Email: data.Email.toLowerCase(), //sanitizing using lower case
-            Password: encryptedPassword,
-            Phone:data.Phone,
-            Address:data.Address,
+            fullname:data.fullname,
+            email: data.email.toLowerCase(), //sanitizing using lower case
+            password: encryptedPassword,
+            phone:data.phone,
+            address:data.address,
             "createdAt": new Date(),
             createdBy: userId
         }

@@ -4,20 +4,20 @@ const { compare } = require("./helpers/compare-password");
 
 exports.login = async (req, res, next) => {
   let isPasswordValid = false;
-  const { Email, Password} = req.body;
+  const { email, password } = req.body;
   try {
-    const existedUser = await req.db.collection("users").findOne({ Email });
+    const existedUser = await req.db.collection("users").findOne({ email });
 
     if (existedUser) {
-      isPasswordValid = await compare(Password, existedUser.Password);
+      isPasswordValid = await compare(password, existedUser.password);
     }
     if (!existedUser || !isPasswordValid)
       return responseHelper.errorResponse(res, "Invalid credentials");
 
-    const oldToken = await req.db.collection("token").findOne({ Email });
+    const oldToken = await req.db.collection("token").findOne({ userId : existedUser._id });
 
     //to create a token
-    const token = jwt.sign({ Email }, process.env.SECRET);
+    const token = jwt.sign({ id: existedUser._id }, process.env.SECRET);
 
     // save user in db
     if (oldToken) {
@@ -25,10 +25,11 @@ exports.login = async (req, res, next) => {
         .collection("token")
         .updateOne({ token: oldToken.token }, { $set: { token } });
     } else {
-      await req.db.collection("token").insertOne({ Email, token });
+      await req.db.collection("token").insertOne({ userId : existedUser._id, token });
 
       return responseHelper.successResponse(res, "User logged in", { token });
     }
+    return responseHelper.errorResponse(res, "Login unsucessfull");
   } catch (error) {
     throw error;
   }
