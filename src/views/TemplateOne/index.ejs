@@ -6,7 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CV 1</title>
-  <!-- <link rel="stylesheet" href="style.css"> -->
   <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,8 +28,7 @@
   }
 
   h1 {
-    font-size: 9px;
-    margin: 9px;
+    font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     font-weight: 700;
@@ -38,7 +36,6 @@
   }
 
   .container {
-    padding: 30px;
     overflow-y: hidden;
     overflow-x: hidden;
   }
@@ -86,7 +83,7 @@
   }
 
   header .profile-info__top--role {
-    font-size: 9px;
+    font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     font-family: 'Lato', sans-serif;
@@ -110,7 +107,7 @@
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    font-size: 9px;
+    font-size: 10px;
     color: #242424;
     font-weight: light;
   }
@@ -120,14 +117,14 @@
     display: inline-block;
     color: inherit;
     font-family: 'Lato', sans-serif;
-    font-size: 9px;
+    font-size: 10px;
   }
 
   header .profile-intro {
     background-color: #F5F5F5;
     padding: 1rem;
     border-radius: 20px;
-    font-size: 12px;
+    font-size: 14px;
     font-family: 'Spectral', serif;
     font-weight: 300;
   }
@@ -146,7 +143,7 @@
 
   main .experience .experience-start {
     border-bottom: 1px #EDEDED solid;
-    padding-bottom: 10px;
+    padding-bottom: 12px;
   }
 
   main .experience .experience-start__top {
@@ -156,7 +153,7 @@
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
   }
 
   main .experience .experience-start__top h2 {
@@ -174,7 +171,7 @@
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    font-size: 9px;
+    font-size: 10px;
   }
 
   main .experience .experience-start__top span {
@@ -182,7 +179,7 @@
   }
 
   main .experience .experience-start__mid {
-    margin-left: 12px;
+    margin-left: 14px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -194,24 +191,24 @@
   }
 
   main .experience .experience-start__mid ul li {
-    font-size: 9px;
+    font-size: 10px;
     font-weight: 400;
   }
 
   main .experience .experience-start__mid div span {
-    font-size: 9px;
+    font-size: 10px;
     font-weight: 400;
   }
 
   main .experience .experience-start__mid p {
-    font-size: 9px;
+    font-size: 10px;
   }
 
   main .others {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     gap: 32px;
   }
 
@@ -223,12 +220,11 @@
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
-    -ms-flex-preferred-size: 50%;
     gap: 16px;
   }
 
   main .others .skills h3 {
-    font-size: 12px;
+    font-size: 14px;
     color: #2D3E5B;
     font-weight: 600;
     font-style: italic;
@@ -237,7 +233,7 @@
   }
 
   main .others .skills p {
-    font-size: 9px;
+    font-size: 12px;
   }
 
   main .others .skills__1,
@@ -258,6 +254,7 @@
     display: -ms-flexbox;
     display: flex;
     -ms-flex-preferred-size: 50%;
+    flex-basis: 50%;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
@@ -266,7 +263,7 @@
   }
 
   main .others .education h3 {
-    font-size: 12px;
+    font-size: 14px;
     color: #2D3E5B;
     font-weight: 600;
     font-style: italic;
@@ -305,7 +302,7 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    font-size: 9px;
+    font-size: 10px;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
@@ -316,8 +313,6 @@
   main .others .education__3 .botpart span {
     padding-right: 4px;
   }
-
-  /*# sourceMappingURL=style.css.map */
 </style>
 
 <body>
@@ -330,129 +325,80 @@
             alt="person-image" />
 
           <div class="top-right">
-            <div class="profile-info__top--name"> Sujana Shrestha</div>
-            <div class="profile-info__top--role"> product designer (ui/ux)</div>
+            <div class="profile-info__top--name">
+              <%= user.fullname %>
+            </div>
+            <div class="profile-info__top--role">
+              <%= user.role %>
+            </div>
           </div>
         </div>
 
         <div class="profile-info__bot">
+          <div><span><i class='bx bx-envelope'></i></span>
+            <%= user.email %>
+          </div>
+          <% if (user.website) { %>
+            <div><span><i class='bx bx-link'></i></span><a href=<%=user.website%>><%=user.website%></a></div>
+            <% } %>
 
-          <div><span><i class='bx bx-envelope'></i></span><a href="mailto:">Email@gmail.com</a></div>
-          <div><span><i class='bx bx-link'></i></span><a href="#">www.suz.com</a></div>
-          <div><span><i class='bx bxl-linkedin'></i></span><a href="#">UserName</a></div>
-          <div><span><i class='bx bxl-instagram'></i></span><a href="#">UserName</a></div>
+              <% if (user?.social?.length) { %>
+                <% user.social.forEach( function(profile) { %>
+                  <%- include('profile', {profile: profile}) %>
+                    <% }) %>
+                      <% } %>
         </div>
       </div>
 
       <div class="profile-intro">
-        I'm a Product Designer , based in L.A and focused on Fintech Startups.
-        Use this block to introduce yourself. Tell the world what you do and why they should care.
+        <%= user.summary %>
       </div>
     </header>
 
     <main>
-      <section class="experience">
-        <h1>experience</h1>
-        <div class="experience-start">
-          <div class="experience-start__top">
-            <h2>Product Designer</h2>
-            <div><span><i class='bx bx-buildings'></i></span> Company</div>
-            <div> <span><i class='bx bx-calendar'></i></span> Mars 2021 - Currently</div>
+      <% if (user?.experiences?.length) { %>
+        <section class="experience">
+
+          <h1>experience</h1>
+          <% user.experiences.forEach( function(experience) { %>
+            <%- include('experience', {experience: experience}) %>
+              <% }) %>
+
+        </section>
+        <% } %>
+
+          <section class="others">
+            <div class="skills">
+              <h1>skills</h1>
+              <% if (user.skills?.industryKnowledge) { %>
+                <div class="skills__1">
+                  <h3>Industrial Skills</h3>
+                  <p>
+                    <%= user.skills.industryKnowledge.join(', ')%></p>
+              </div>
+            <% } %>
+            <% if (user.skills?.tools) { %>
+              <div class="skills__1">
+                <h3>Tools</h3>
+                <p><%= user.skills.tools.join(' , ')%></p>
+              </div>
+            <% } %>
+            <div class="skills__1">
+              <h3>Languages</h3>
+              <p>Spanish and English.</p>
+            </div>
           </div>
 
-          <div class="experience-start__mid">
-            <div>
-              <ul>
-                <li>Conducted user interviews, surveys, competitive analysis, and market research.</li>
-                <li>Conducted user interviews, surveys, competitive analysis, and market research.</li>
-                <li>Conducted user interviews, surveys, competitive analysis, and market research.</li>
-                <li>Conducted user interviews, surveys, competitive analysis, and market research.</li>
-                <li>Conducted user interviews, surveys, competitive analysis, and market research.</li>
-                <li>Conducted user interviews, surveys, competitive analysis, and market research.</li>
-                <li>Conducted user interviews, surveys, competitive analysis, and market research.</li>
-                <li>Conducted user interviews, surveys, competitive analysis, and market research.</li>
-                <li>Conducted user interviews, surveys, competitive analysis, and market research.</li>
-                <li>Conducted user interviews, surveys, competitive analysis, and market research.</li>
-                <li>Conducted user interviews, surveys, competitive analysis, and market research.</li>
-                <li>Conducted user interviews, surveys, competitive analysis, and market research.</li>
-              </ul>
-            </div>
-            <div><span>Summary</span>
-              <p>Responsible for designing the look and feel for the updated website which increased the traffic by 40%,
-                page views by 60% and average session time by 90%.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="experience-start">
-          <div class="experience-start__top">
-            <h2>Product Designer</h2>
-            <div><span><i class='bx bx-buildings'></i></span> Company</div>
-            <div> <span><i class='bx bx-calendar'></i></span> Mars 2021 - Currently</div>
-          </div>
-
-          <div class="experience-start__mid">
-            <div>
-              <ul>
-                <li>Conducted user interviews, surveys, competitive analysis, and market research.</li>
-                <li>Conducted user interviews, surveys, competitive analysis, and market research.</li>
-                <li>Conducted user interviews, surveys, competitive analysis, and market research.</li>
-                <li>Conducted user interviews, surveys, competitive analysis, and market research.</li>
-              </ul>
-            </div>
-            <div><span>Summary</span>
-              <p>Responsible for designing the look and feel for the updated website which increased the traffic by 40%,
-                page views by 60% and average session time by 90%.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-      <section class="others">
-        
-        <div class="skills">
-          <h1>skills</h1>
-          <div class="skills__1">
-            <h3>Ux Design</h3>
-            <p>Data analysis, User Research, User testing, Teamwork, Wireframing, Prototyping.</p>
-          </div>
-          <div class="skills__2">
-            <h3>Tools</h3>
-            <p>Figma, Stark, Figjam, Protopie, Maze, Webflow, Slack, Zeplin, Wordpress.</p>
-          </div>
-          <div class="skills__3">
-            <h3>Languages</h3>
-            <p>Spanish and English.</p>
-          </div>
-        </div>
-        <div class="education">
-          <h1>education</h1>
-          <div class="education__1">
-            <h3>Course in UX Research</h3>
-            <div class="botpart">
-              <div><span><i class='bx bx-buildings'></i></span> education platform</div>
-              <div><span><i class='bx bx-calendar'></i></span> 2022</div>
-            </div>
-          </div>
-          <div class="education__2">
-            <h3>Course in UX Research</h3>
-            <div class="botpart">
-              <div><span><i class='bx bx-buildings'></i></span> education platform</div>
-              <div><span><i class='bx bx-calendar'></i></span> 2022</div>
-            </div>
-          </div>
-          <div class="education__3">
-            <h3>Course in UX Research</h3>
-            <div class="botpart">
-              <div><span><i class='bx bx-buildings'></i></span> education platform</div>
-              <div><span><i class='bx bx-calendar'></i></span> 2022</div>
-            </div>
-          </div>
-        </div>
-  </div>
-  </section>
-  </main>
+          <% if (user?.education?.length) { %>
+            <div class="education">
+              <h1>education</h1>
+              <% user.education.forEach( function(education) { %>
+                <%- include('education', {education: education}) %>
+                      <% }) %>
+                </div>
+                <% } %>
+          </section>
+    </main>
 
   </div>
 

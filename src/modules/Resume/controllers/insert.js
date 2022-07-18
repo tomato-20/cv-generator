@@ -1,3 +1,5 @@
+const { v4: uuid } = require('uuid')
+
 const resHelper = require('../../../helpers/responseHelper');
 const [validateResumeInsert] = require('../validation/resumeInsertValidation')
 const {
@@ -17,7 +19,8 @@ const insertResume = async (req, res, next) => {
     const Certifications = req.db.collection('certifications')
     const Skills = req.db.collection('skills');
     const User_Resume = req.db.collection('user_resume')
-    const { userId, ...resumeInsertData } = req.body;
+    const resumeInsertData  = req.body;
+    const userId = req.user.id
     let promises = []
 
 
@@ -30,7 +33,20 @@ const insertResume = async (req, res, next) => {
         let existUser = await Users?.findOne({ _id: userId });
         if (!existUser) return resHelper.errorResponse(res, 'User Doesnot Exist!', 400)
 
-        let selectedTemplate = await 
+        let user_resume = await User_Resume.findOne({userId})
+
+        // make update to user_resume mapping table if necessary
+        let resumeId = uuid();
+
+        if(!user_resume) {
+            let insertUserResumeMap = await User_Resume.insertOne({userId, resumeId}); 
+            // TODO [opt] : check if insertSuccessfull 
+        } else if (!user_resume.resumeId) {
+            let updateUserResumeMap = await User_Resume.updateOne({userId}, {resumeId})
+            // TODO [opt] : check if update successfull
+        } else {
+            resumeId = user_resume.resumeId
+        }
 
         // insert basic info into database
         let basicInfoData = { role: resumeInsertData.role, summary: resumeInsertData.summary, website: resumeInsertData.website }
@@ -41,31 +57,31 @@ const insertResume = async (req, res, next) => {
         let profilesData = resumeInsertData.social;
         if (!!profilesData?.length) {
             // let profileInsertResult = await Profiles.insertMany(prepareUserProfilesInsertData(profilesData));
-            promises.push(Profiles.insertMany(prepareUserProfilesInsertData(profilesData, userId)))
+            promises.push(Profiles.insertMany(prepareUserProfilesInsertData(profilesData, userId, resumeId)))
         }
 
         // insert education
         let educationData = resumeInsertData.education;
         if (!!educationData?.length) {
             // let educationInsetResult = await Education.insertMany(prepareEducationInsertData(educationData));
-            promises.push(Education.insertMany(prepareEducationInsertData(educationData, userId)));
+            promises.push(Education.insertMany(prepareEducationInsertData(educationData, userId, resumeId)));
         }
 
         // insert experiences
         let experienceData = resumeInsertData.work;
         if (!!experienceData?.length) {
-            promises.push(Experiences.insertMany(prepareExperiencesInsertData(experienceData, userId)))
+            promises.push(Experiences.insertMany(prepareExperiencesInsertData(experienceData, userId, resumeId)))
         }
 
         // insert certification
         let certificationData = resumeInsertData.certification;
         if (!!certificationData?.length) {
-            promises.push(Certifications.insertMany(prepareCertificationsInsertData(certificationData, userId)))
+            promises.push(Certifications.insertMany(prepareCertificationsInsertData(certificationData, userId, resumeId)))
         }
 
         // insert skills
         let skillsData = { industryKnowledge: resumeInsertData.industryKnowledge, programmingSkills: resumeInsertData.programmingSkills, tools: resumeInsertData.tools }
-        promises.push(Skills.insertOne(prepareSkillInsertData(skillsData, userId)))
+        promises.push(Skills.insertOne(prepareSkillInsertData(skillsData, userId, resumeId)))
 
         Promise.all(
             [

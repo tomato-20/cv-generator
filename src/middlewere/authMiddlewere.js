@@ -9,10 +9,10 @@ module.exports = (req, res, next) => {
 
         let token = req.headers["authorization"] || req.headers["Authorization"] || req.query.token
 
-        if (!token) resHelper.errorResponse(res, 'Token is required', 401)
+        if (!token) return resHelper.errorResponse(res, 'Token is required', 401)
 
         jwt.verify(token, TOKEN_SECRET, function (err, decoded) {
-            if (err) resHelper.errorResponse(res, err.message || 'Invalid Token', 401)
+            if (err) return resHelper.errorResponse(res, err.message || 'Invalid Token', 401)
 
             req.user = decoded
         })

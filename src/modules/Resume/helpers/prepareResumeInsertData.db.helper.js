@@ -14,12 +14,13 @@ const prepareBasicInfoData = (data, userId) => {
     }
 }
 
-const prepareUserProfilesInsertData = (data, userId, meta) => {
+const prepareUserProfilesInsertData = (data, userId, resumeId, meta) => {
     try {
       return data.map(profile => {
           return {
               _id : uuidv4(),
              userId,
+             resumeId,
              profile: profile.profile,
              url: profile.url,
              created : new Date(),
@@ -33,12 +34,13 @@ const prepareUserProfilesInsertData = (data, userId, meta) => {
   }
 
 
-const prepareEducationInsertData = (data, userId) => {
+const prepareEducationInsertData = (data, userId, resumeId) => {
     try {
         return data.map(element => {
             return {
                 _id: uuidv4(),
                 userId,
+                resumeId,
                 institution: element?.institution,
                 course : element?.course,
                 startDate : element?.startDate,
@@ -53,12 +55,13 @@ const prepareEducationInsertData = (data, userId) => {
     }
 }
 
-const prepareCertificationsInsertData = (data, userId) => {
+const prepareCertificationsInsertData = (data, userId, resumeId) => {
     try {
         return data.map(element => {
             return {
                 _id: uuidv4(),
                 userId,
+                resumeId,
                 institution: element?.institution,
                 course : element?.course,
                 startDate : element?.startDate,
@@ -73,12 +76,13 @@ const prepareCertificationsInsertData = (data, userId) => {
     }
 }
 
-const prepareExperiencesInsertData = (data, userId) => {
+const prepareExperiencesInsertData = (data, userId, resumeId) => {
     try {
         return data.map(element => {
             return {
                 _id: uuidv4(),
                 userId,
+                resumeId,
                 organization: element?.organization,
                 position : element?.position,
                 location : element?.position,
@@ -97,11 +101,12 @@ const prepareExperiencesInsertData = (data, userId) => {
 }
 
 
-const prepareSkillInsertData = (data, userId) => {
+const prepareSkillInsertData = (data, userId, resumeId) => {
     try {
          return {
                 _id: uuidv4(),
                 userId,
+                resumeId,
                industryKnowledge: data?.industryKnowledge,
                programmingSkills : data?.programmingSkills,
                tools : data?.tools,

@@ -4,7 +4,7 @@ const insertResumeController = require('./controllers/insert')
 const getPdfController = require('./controllers/getPdf')
 const authMiddlewere = require('../../middlewere/authMiddlewere');
 
-router.post('/',insertResumeController)
+router.post('/',authMiddlewere,insertResumeController)
 
 router.get('/getPdf', authMiddlewere, getPdfController)
 
