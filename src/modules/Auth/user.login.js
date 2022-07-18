@@ -17,20 +17,21 @@ exports.login = async (req, res, next) => {
     const oldToken = await req.db.collection("token").findOne({ userId : existedUser._id });
 
     //to create a token
-    const token = jwt.sign({ id: existedUser._id }, process.env.SECRET);
+    const token = jwt.sign({ id: existedUser._id }, process.env.TOKEN_SECRET);
 
     // save user in db
     if (oldToken) {
-      let updatetedUser = await req.db
+      let updatedUser = await req.db
         .collection("token")
         .updateOne({ token: oldToken.token }, { $set: { token } });
-    } else {
-      await req.db.collection("token").insertOne({ userId : existedUser._id, token });
-
       return responseHelper.successResponse(res, "User logged in", { token });
-    }
-    return responseHelper.errorResponse(res, "Login unsucessfull");
-  } catch (error) {
-    throw error;
+
+    } else {  
+      await req.db.collection("token").insertOne({ userId : existedUser._id, token });
+      return responseHelper.successResponse(res, "User logged in", { token })
+
+  } }
+  catch (error) {
+    return responseHelper.errorResponse(res.err.message || "Login unsucessfull");
   }
 };
