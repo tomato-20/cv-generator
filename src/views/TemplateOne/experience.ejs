@@ -1,0 +1,22 @@
+<div class="experience-start">
+  <div class="experience-start__top">
+    <h2><%=experience.position%></h2>
+    <div><span><i class='bx bx-buildings'></i></span> <%= experience.organization %></div>
+    <div> <span><i class='bx bx-calendar'></i></span> <%= experience.startDate %> - <%= experience.endDate %></div>
+  </div>
+
+  <div class="experience-start__mid">
+    <div>
+      <ul>
+        <% if (!!experience.description.length) { %>
+          <% experience.description.forEach( function(descriptionItem) { %>
+            <li><%= descriptionItem %></li>
+          <% }) %>
+        <% } %>
+      </ul>
+    </div>
+    <div><span>Summary</span>
+      <p><%= experience.summary %></p>
+    </div>
+  </div>
+</div>

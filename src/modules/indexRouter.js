@@ -6,9 +6,13 @@ const authRouter = require("./Auth/router");
 
 const templateRouter = require("./Template/router");
 
-router.use('/user/resume',resumeRouter)
+const userRouter = require('./Users/router')
+
+router.use('/resume',resumeRouter)
 
 router.use("/auth", authRouter)
+
+router.use("/user",userRouter)
 
 router.use("/template", templateRouter)
 

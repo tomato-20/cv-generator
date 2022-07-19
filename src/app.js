@@ -1,7 +1,8 @@
 require('dotenv').config();
 const cors = require('cors');
+const path = require('path');
 const express = require('express');
-const path = require("path");
+
 
 
 const indexRouter = require('./modules/indexRouter')
@@ -22,6 +23,10 @@ app.use(express.urlencoded({
   extended : false
 }))
 
+// serve html templates
+app.set('view engine','ejs');
+app.set('views',path.join(__dirname,'views'))
+
 // logging request in console
 app.use((req,res,next)=>{
   let date = new Date()
@@ -38,7 +43,7 @@ app.use('/api/v1',indexRouter)
 // 404 error
 app.use('/*', (req,res,next)=>{
     res.status(404).json({
-        msgt: `Cannot ${req.method} ${req.url} Not found`
+        message: `Cannot ${req.method}. ${req.originalUrl} Not found`
     })
 })
 

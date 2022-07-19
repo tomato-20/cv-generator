@@ -1,0 +1,69 @@
+{
+    "summary": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dui velit, malesuada a risus eget, dapibus semper neque. Integer porttitor tempor mollis. Mauris maximus mauris sed tellus rhoncus venenatis. Etiam id dui ac dolor elementum auctor non nec nisi. Integer cursus massa vitae orci semper viverra.",
+    "role": "lorem ipsum",
+    "website": "https://longdogechallenge.com",
+    "social": [
+        {
+            "profile": "github",
+            "url": "https://longdogechallenge.com/"
+        },
+        {
+            "profile": "linkedin",
+            "url": "https://longdogechallenge.com/"
+        }
+    ],
+    "education": [
+        {
+            "institution": "institution 2",
+            "startDate": "2022-10-20T00:00:00.000Z",
+            "endDate": "2022-10-20T00:00:00.000Z",
+            "course" : "Course Two Course",
+            "location" : "street, city, state"
+        },
+        {
+            "institution": "institution 2",
+            "startDate": "2022-10-20T00:00:00.000Z",
+            "endDate": "2022-10-20T00:00:00.000Z",
+            "course" : "Course One Course",
+            "location" : "street, city, state"
+        }
+    ],
+    "work": [
+        {
+            "organization": "organization 1",
+            "position": "position position",
+            "startDate": "2022-10-20T00:00:00.000Z",
+            "endDate": "2022-10-20T00:00:00.000Z",
+            "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dui velit, malesuada a risus eget, dapibus semper neque. Integer porttitor tempor mollis.",
+            "description": ["Lorem ipsum dolor sit amet, consectetur adipiscing elit.","Lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum ipsum", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum","Lorem ipsum dolor sit amet, consectetur adipiscing elit."]
+        },      
+        {
+            "organization": "organization 2",
+            "position": "position  lorem ipsum",
+            "startDate": "2022-10-20T00:00:00.000Z",
+            "endDate": "2022-10-20T00:00:00.000Z",
+            "summary": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dui velit, malesuada a risus eget, dapibus semper neque. Integer porttitor tempor mollis.",
+            "description": ["Lorem ipsum dolor sit amet, consectetur adipiscing elit.","Lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum ipsum", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum","Lorem ipsum dolor sit amet, consectetur adipiscing elit."]
+           
+        },      {
+            "organization": "organization 3",
+            "position": "consectetur adipiscing sit",
+            "startDate": "2022-10-20T00:00:00.000Z",
+            "endDate": "2022-10-20T00:00:00.000Z",
+            "summary": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dui velit, malesuada a risus eget, dapibus semper neque. Integer porttitor tempor mollis.",
+            "description": ["Lorem ipsum dolor sit amet, consectetur adipiscing elit.","Lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum ipsum", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum","Lorem ipsum dolor sit amet, consectetur adipiscing elit."]
+           
+        }
+    ],
+    "certification" : [
+        {
+            "institution": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+            "course" : "LLorem ipsum dolor sit amet", 
+            "startDate" : "2022-10-20T00:00:00.000Z",
+            "endDate" :"2022-10-20T00:00:00.000Z"
+        }
+    ],
+    "industryKnowledge" : ["product design", "user interface", "user experience", "interaction design"],
+    "programmingSkills" : ["HTML", "CSS", "JQUERY", "React"],
+    "tools" : ["figma", "XD", "blender"]
+}
