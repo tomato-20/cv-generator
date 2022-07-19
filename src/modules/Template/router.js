@@ -1,3 +1,7 @@
 const router = require("express").Router();
 
-//router.use("/lists", templateLists);
+const template = require("./templateList");
+
+router.get("/lists", template.getTemplateLists);
+ 
+module.exports=router;

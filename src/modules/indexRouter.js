@@ -10,6 +10,6 @@ router.use('/user/resume',resumeRouter)
 
 router.use("/auth", authRouter)
 
-// router.use("/template", templateRouter)
+router.use("/template", templateRouter)
 
 module.exports = router;
