@@ -76,7 +76,7 @@ const getPdf = async (req, res, next) => {
 
                 // convert html to pdf
 
-                return res.render('TemplateTwo/index.ejs', { user: displayData }, async function (err, html) {
+                return res.render('TemplateOne/index.ejs', { user: displayData }, async function (err, html) {
                     if (err) {
                         console.log(err);
                         res.json({ message: err.message })
@@ -96,7 +96,8 @@ const getPdf = async (req, res, next) => {
 
                     console.log('jjf')
                     pdf.create(html, {
-                        format: "A4"
+                        format: "A4",
+                        border: { top: "20px", bottom: "20px"}
                     }).toBuffer(function (err, buffer) {
                         if (err) console.log(err)
                         // fs.writeFileSync('template.pdf',buffer);

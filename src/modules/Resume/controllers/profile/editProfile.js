@@ -1,5 +1,5 @@
 const resHelper = require('../../../../helpers/responseHelper')
-const [validateUserProfileUpdate] = require('../../validation/userProfileUpdateValidation')
+const {validateUserProfileUpdate} = require('../../validation/resumeProfileValidations')
 const prepareUpdateData = require('../../helpers/prepareProfileUpdate')
 
 const editProfile = async (req,res,next) => {

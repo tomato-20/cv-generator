@@ -1,6 +1,6 @@
 const resHelper = require('../../../../helpers/responseHelper')
 const prepareUpdateData = require('../../helpers/prepareProfileUpdate')
-const [validateEditSkills] = require('../../validation/editSkillValidation')
+const {validateSkillsUpdate} = require('../../validation/resumeSkillsValidation')
 
 const editSkills = async (req, res, next) => {
     const userId = req.user.id;
@@ -9,7 +9,7 @@ const editSkills = async (req, res, next) => {
 
     try {
 
-        let validationResult = validateEditSkills(req.body)
+        let validationResult = validateSkillsUpdate(req.body)
         if (validationResult.error) {
             return resHelper.errorResponse(res, validationResult.error.details[0].message)
         }

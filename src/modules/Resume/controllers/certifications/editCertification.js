@@ -1,6 +1,6 @@
 const resHelper = require('../../../../helpers/responseHelper')
 const prepareUpdateData = require('../../helpers/prepareProfileUpdate')
-const [validateCertificationSchema] = require('../../validation/editCertificationValidation')
+const {validateCertificationUpdate} = require('../../validation/resumeCertificationValidation')
 
 const editSingleCertification  = async (req,res,next) => {
     const userId = req.user.id;
@@ -10,7 +10,7 @@ const editSingleCertification  = async (req,res,next) => {
 
     try {
 
-        let validationResult = validateCertificationSchema(req.body)
+        let validationResult = validateCertificationUpdate(req.body)
         if (validationResult.error) {
             return resHelper.errorResponse(res, validationResult.error.details[0].message)
         }

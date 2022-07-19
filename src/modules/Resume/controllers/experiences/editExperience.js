@@ -1,6 +1,6 @@
 const resHelper = require('../../../../helpers/responseHelper')
 const prepareUpdateData = require('../../helpers/prepareProfileUpdate')
-const [validateEditExperience] = require('../../validation/editExperienceValidation')
+const {validateExperienceUpdate} = require('../../validation/resumeExperienceValidation')
 
 const editSingleExperience = async (req,res,next) => {
     const userId = req.user.id;
@@ -10,7 +10,7 @@ const editSingleExperience = async (req,res,next) => {
 
     try {
 
-        let validationResult = validateEditExperience(req.body)
+        let validationResult = validateExperienceUpdate(req.body)
         if (validationResult.error) {
             return resHelper.errorResponse(res, validationResult.error.details[0].message)
         }
