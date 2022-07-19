@@ -1,5 +1,5 @@
 const resHelper = require('../../../../helpers/responseHelper')
-const prepareUpdateData = require('../../helpers/prepareProfileUpdate')
+const prepareUpdateData = require('../../helpers/prepareDbUpdateData')
 const {validateSkillsUpdate} = require('../../validation/resumeSkillsValidation')
 
 const editSkills = async (req, res, next) => {

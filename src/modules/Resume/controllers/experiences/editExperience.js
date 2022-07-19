@@ -1,5 +1,5 @@
 const resHelper = require('../../../../helpers/responseHelper')
-const prepareUpdateData = require('../../helpers/prepareProfileUpdate')
+const prepareUpdateData = require('../../helpers/prepareDbUpdateData')
 const {validateExperienceUpdate} = require('../../validation/resumeExperienceValidation')
 
 const editSingleExperience = async (req,res,next) => {

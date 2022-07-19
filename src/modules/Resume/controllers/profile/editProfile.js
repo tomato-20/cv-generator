@@ -1,6 +1,6 @@
 const resHelper = require('../../../../helpers/responseHelper')
 const {validateUserProfileUpdate} = require('../../validation/resumeProfileValidations')
-const prepareUpdateData = require('../../helpers/prepareProfileUpdate')
+const prepareUpdateData = require('../../helpers/prepareDbUpdateData')
 
 const editProfile = async (req,res,next) => {
     const userId = req.user.id;

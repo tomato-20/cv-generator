@@ -1,4 +1,4 @@
-const prepareProfileUpdateData = (data, userId) => {
+const prepareDbUpdateData = (data, userId) => {
     try {
         return {
             ...data,
@@ -10,4 +10,4 @@ const prepareProfileUpdateData = (data, userId) => {
     }
 }
 
-module.exports = prepareProfileUpdateData
+module.exports = prepareDbUpdateData
