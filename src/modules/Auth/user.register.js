@@ -49,7 +49,7 @@ exports.createUser = async (req, res, next) => {
       //creating resume table
       const userResume = await req.db.collection("user_resume").insertOne({
         userId: userPreparedInsertData._id,
-        resumeId: uuid.v4(),
+        resumeId: null,
         selected: null,
       });
       return responseHelper.successResponse(res, "User registered sucessfully");

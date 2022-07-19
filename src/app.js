@@ -1,7 +1,7 @@
 require('dotenv').config();
 const cors = require('cors');
-const express = require('express');
 const path = require('path');
+const express = require('express');
 
 
 
@@ -34,6 +34,9 @@ app.use((req,res,next)=>{
   req.db = app.locals.db;
   next();
 })
+
+//dir for template images
+app.use( express.static("public"))
 
 app.use('/api/v1',indexRouter)  
 
