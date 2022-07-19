@@ -1,7 +1,7 @@
 const Joi = require('joi');
 
 const insertResumeSchema = Joi.object({
-    summary: Joi.string().required().$.max(320),
+    summary: Joi.string().required().$.max(1000),
     role: Joi.string().required().$.max(90).rule({message: "role must be at most 90 characters"}),
     website: Joi.string().uri().allow(''),
     social : Joi.array().items(Joi.object({
@@ -12,7 +12,7 @@ const insertResumeSchema = Joi.object({
         institution: Joi.string().required().label('Education institution'),
         course: Joi.string().required().label('Education course'),
         startDate : Joi.date().required().label('Education start date'),
-        endDate : Joi.date().required().label('Education end date'),
+        endDate : Joi.alternatives().try(Joi.string().valid('present'),Joi.date()).required().label('Education end date'),
         location : Joi.string().required().label('Education location')
     })).$.max(2).min(1).rule({message: "education can have only one or two entries"}),
     work: Joi.array().items(Joi.object({
@@ -20,7 +20,7 @@ const insertResumeSchema = Joi.object({
         position: Joi.string().required().label('Work position'),
         location : Joi.string().label('Work location'),
         summary : Joi.string().max(300).label('Work summary'),
-        description : Joi.array().items(Joi.string().max(300)).label('Work description').max(5),
+        description : Joi.array().items(Joi.string().max(300)).label('Work description').max(8),
         startDate : Joi.date().required().label('Work start date'),
         endDate : Joi.date().required().label('Work end date'),
     })).max(5).required(),

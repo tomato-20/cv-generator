@@ -1,250 +1,315 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-
-  <title>Jonathan Doe | Web Designer, Director | name@yourdomain.com</title>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-
-  <meta name="keywords" content="" />
-  <meta name="description" content="" />
-
-  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/reset-fonts-grids/reset-fonts-grids.css" media="all" /> 
-
-  <style>
-    /*
----------------------------------------------------------------------------------
-	STRIPPED DOWN RESUME TEMPLATE
-    html resume
-
-    v0.9: 5/28/09
-
-    design and code by: thingsthatarebrown.com 
-                        (matt brown)
----------------------------------------------------------------------------------
-*/
-
-
-.msg { padding: 10px; background: #222; position: relative; }
-.msg h1 { color: #fff;  }
-.msg a { margin-left: 20px; background: #408814; color: white; padding: 4px 8px; text-decoration: none; }
-.msg a:hover { background: #266400; }
-
-/* //-- yui-grids style overrides -- */
-body { font-family: Georgia; color: #444; }
-#inner {  background: #f5f5f5; border: solid #666; border-width: 8px 0 2px 0; }
-.yui-gf { border-bottom: 1px solid #ccc; }
-
-/* //-- header, body, footer -- */
-#hd { margin: 2.5em 0 3em 0; padding-bottom: 1.5em; border-bottom: 1px solid #ccc }
-#hd h2 { text-transform: uppercase; letter-spacing: 2px; }
-#bd, #ft { margin-bottom: 2em; }
-
-/* //-- footer -- */
-#ft { padding: 1em 0 5em 0; font-size: 92%; border-top: 1px solid #ccc; text-align: center; }
-#ft p { margin-bottom: 0; text-align: center;   }
-
-/* //-- core typography and style -- */
-#hd h1 { font-size: 48px; text-transform: uppercase; letter-spacing: 3px; }
-h2 { font-size: 152% }
-h3, h4 { font-size: 122%; }
-h1, h2, h3, h4 { color: #333; }
-p { font-size: 100%; line-height: 18px; padding-right: 3em; }
-a { color: #990003 }
-a:hover { text-decoration: none; }
-strong { font-weight: bold; }
-li { line-height: 24px; border-bottom: 1px solid #ccc; }
-p.enlarge { font-size: 144%; padding-right: 6.5em; line-height: 24px; }
-p.enlarge span { color: #000 }
-.contact-info { margin-top: 7px; }
-.first h2 { font-style: italic; }
-.last { border-bottom: 0 }
-
-
-/* //-- section styles -- */
-
-a#pdf { display: block; float: left; background: #666; color: white; padding: 6px 50px 6px 12px; margin-bottom: 6px; text-decoration: none;  }
-a#pdf:hover { background: #222; }
-
-.job { position: relative; margin-bottom: 1em; padding-bottom: 1em; border-bottom: 1px solid #ccc; }
-.job h4 { position: absolute; top: 0.35em; right: 0 }
-.job p { margin: 0.75em 0 3em 0; }
-
-.last { border: none; }
-.skills-list {  }
-.skills-list ul { margin: 0; }
-.skills-list li { margin: 3px 0; padding: 3px 0; }
-.skills-list li span { font-size: 152%; display: block; margin-bottom: -2px; padding: 0 }
-.talent { width: 32%; float: left }
-.talent h2 { margin-bottom: 6px; }
-
-#srt-ttab { margin-bottom: 100px; text-align: center;  }
-#srt-ttab img.last { margin-top: 20px }
-
-/* --// override to force 1/8th width grids -- */
-.yui-gf .yui-u{width:80.2%;}
-.yui-gf div.first{width:12.3%;}
-
-
-
-  </style>
-
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- <link rel="stylesheet" href="style.css" /> -->
+  <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+  <title>Document</title>
 </head>
 
+<style>
+  * {
+    box-sizing: border-box;
+    font-family: Poppins, sans-serif;
+  }
+
+  body {
+    padding: 16px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  p {
+    margin: 0;
+    padding: 0;
+  }
+
+  .date {
+    font-size: 10px;
+    color: #73808D;
+  }
+
+  .title {
+    font-size: 8px;
+    font-weight: bold;
+    color: #aaaaaa;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding-bottom: 12px;
+  }
+
+  @page {
+    size: 5.5in 8.5in;
+  }
+
+  .left-float {
+    width: 70%;
+    float: left;
+    padding-right: 14px;
+  }
+
+  .right-float {
+    width: 30%;
+    float: right;
+  }
+
+  /* <--------<headerpart>------------>  */
+  header {
+    padding-bottom: 24px;
+  }
+
+  .header-text h1 {
+    font-size: 24px;
+    padding-bottom: 4px;
+  }
+
+  .header-text p {
+    font-size: 18px;
+  }
+
+  /* <--------</headerpart>------------>  */
+
+
+  /* <--------<bodypart>------------>  */
+
+  /* <--------<left-float>------------>  */
+
+
+
+  .experiences {
+    padding-bottom: 16px;
+  }
+
+  .experiences h4 {
+    font-size: 13px;
+    font-weight: bold;
+  }
+
+  .experiences .org {
+    font-size: 12px;
+    padding: 4px 0;
+  }
+
+  .experiences .details {
+    font-size: 13px;
+    padding-top: 4px;
+  }
+
+  .experiences:last-child {
+    padding-bottom: 24px;
+  }
+
+  .section-edu {
+    padding-bottom: 24px;
+  }
+
+  .section-edu h4 {
+    font-size: 13px;
+    font-weight: bold;
+  }
+
+  .section-edu .college {
+    font-size: 12px;
+    padding: 4px 0;
+  }
+
+  .section-courses h4 {
+    font-size: 13px;
+    font-weight: bold;
+  }
+
+  .course-website {
+    font-size: 12px;
+    padding: 4px 0;
+  }
+
+  /* <--------</left-float>------------>  */
+
+  /* <--------</bodypart>------------>  */
+
+
+
+  /* <--------<right-float>------------>  */
+
+  .contact-section div {
+    font-size: 12px;
+    color: #6A7581;
+  }
+
+  .contact-section span {
+    padding-right: 4px;
+  }
+
+  .contact-section,
+  .knowledge-section,
+  .skill-section,
+  .tool-section {
+    padding-bottom: 16px;
+  }
+
+  .knowledge-section h5,
+  .skill-section h5,
+  .tool-section h5,
+  .social-section h5 {
+    font-size: 12px;
+    color: #6A7581;
+    padding-bottom: 8px;
+    text-transform: capitalize;
+  }
+
+  .knowledge-section p,
+  .skill-section p {
+    font-size: 12px;
+    font-weight: 300;
+    margin-bottom: 8px;
+    color: white;
+    background-color: #6A7581;
+    max-width: max-content;
+    padding: 4px 10px;
+    border-radius: 12px;
+  }
+
+
+  .tool-section p {
+    border: 0.5px dotted #6A7581;
+    color: #6A7581;
+    font-size: 12px;
+    border-radius: 8px;
+    padding: 10px;
+  }
+
+
+  .social-section div {
+    border: 1px solid #6A7581;
+    max-width: max-content;
+    border-radius: 20px;
+    font-size: 12px;
+    color: #6A7581;
+    padding: 4px 8px;
+    margin-bottom: 8px;
+  }
+
+  .social-section span {
+    padding-right: 4px;
+  }
+
+  .social-section div:last-child,
+  .knowledge-section p:last-child,
+  .skill-section p:last-child {
+    margin-bottom: 0px;
+  }
+
+
+
+  /* <--------</right-float>------------>  */
+</style>
+
 <body>
+  <header>
+    <div class="header-text">
+      <h1>Your Name</h1>
+      <p>Backend Developer</p>
+    </div>
+  </header>
 
-  <div id="doc2" class="yui-t7">
-    <div id="inner">
+  <div class="body-section">
 
-      <div id="hd">
-        <div class="yui-gc">
-          <div class="yui-u first">
-            <h1>Jonathan Doe</h1>
-            <h2>Web Designer, Director</h2>
-          </div>
+    <div class="left-float">
 
-          <div class="yui-u">
-            <div class="contact-info">
-              <h3><a id="pdf" href="#">Download PDF</a></h3>
-              <h3><a href="mailto:name@yourdomain.com">name@yourdomain.com</a></h3>
-              <h3>(313) - 867-5309</h3>
-            </div>
-            <!--// .contact-info -->
-          </div>
+      <div class="section-exp">
+        <p class="title">Experience</p>
+        <div class="experiences">
+          <h4>Backend Developer</h4>
+          <p class="org">Google</p>
+          <p class="date">Aug 2018 - Present</p>
+          <p class="details">
+            Lead the UI design with the accountability of the design system,
+            collaborated with product and development teams on core projects to
+            improve product interfaces and experiences.
+          </p>
         </div>
-        <!--// .yui-gc -->
-      </div>
-      <!--// hd -->
-
-      <div id="bd">
-        <div id="yui-main">
-          <div class="yui-b">
-
-            <div class="yui-gf">
-              <div class="yui-u first">
-                <h2>Profile</h2>
-              </div>
-              <div class="yui-u">
-                <p class="enlarge">
-                  Progressively evolve cross-platform ideas before impactful infomediaries.
-                  Energistically visualize tactical initiatives before cross-media catalysts for
-                  change.
-                </p>
-              </div>
-            </div>
-            <!--// .yui-gf -->
-
-            <div class="yui-gf">
-              <div class="yui-u first">
-                <h2>Skills</h2>
-              </div>
-              <div class="yui-u">
-
-                <div class="talent">
-                  <h2>Web Design</h2>
-                  <p>Assertively exploit wireless initiatives rather than synergistic core
-                    competencies. </p>
-                </div>
-
-                <div class="talent">
-                  <h2>Interface Design</h2>
-                  <p>Credibly streamline mission-critical value with multifunctional functionalities.
-                  </p>
-                </div>
-
-                <div class="talent">
-                  <h2>Project Direction</h2>
-                  <p>Proven ability to lead and manage a wide variety of design and development
-                    projects in team and independent situations.</p>
-                </div>
-              </div>
-            </div>
-            <!--// .yui-gf -->
-
-            <div class="yui-gf">
-              <div class="yui-u first">
-                <h2>Technical</h2>
-              </div>
-              <div class="yui-u">
-                <ul class="talent">
-                  <li>XHTML</li>
-                  <li>CSS</li>
-                  <li class="last">Javascript</li>
-                </ul>
-
-                <ul class="talent">
-                  <li>Jquery</li>
-                  <li>PHP</li>
-                  <li class="last">CVS / Subversion</li>
-                </ul>
-
-                <ul class="talent">
-                  <li>OS X</li>
-                  <li>Windows XP/Vista</li>
-                  <li class="last">Linux</li>
-                </ul>
-              </div>
-            </div>
-            <!--// .yui-gf-->
-
-            <div class="yui-gf">
-
-              <div class="yui-u first">
-                <h2>Experience</h2>
-              </div>
-              <!--// .yui-u -->
-
-              <div class="yui-u">
-
-
-                <% if (data.work) { %>
-                  <% data.work.forEach(function(work) {%>
-                      <%- include('experiences',{work: work}) %>
-                    <%})%>
-                      <% } %>
-
-
-              </div>
-              <!--// .yui-u -->
-            </div>
-            <!--// .yui-gf -->
-
-
-            <div class="yui-gf last">
-              <div class="yui-u first">
-                <h2>Education</h2>
-              </div>
-             
-              <% if (data.education) { %>
-                <% data.education.forEach(function(education) {%>
-                    <%- include('education',{education: education}) %>
-                  <%})%>
-                    <% } %>
-
-            </div>
-            <!--// .yui-gf -->
-
-
-          </div>
-          <!--// .yui-b -->
+        <div class="experiences">
+          <h4>Frontend Developer</h4>
+          <p class="org">Bitsbeat</p>
+          <p class="date">Aug 2018 - Present</p>
+          <p class="details">
+            Lead the UI design with the accountability of the design system,
+            collaborated with product and development teams on core projects to
+            improve product interfaces and experiences.
+          </p>
         </div>
-        <!--// yui-main -->
+        <div class="experiences">
+          <h4>Blockchain Engineer</h4>
+          <p class="org">Leapfrog</p>
+          <p class="date">Aug 2018 - Present</p>
+          <p class="details">
+            Lead the UI design with the accountability of the design system,
+            collaborated with product and development teams on core projects to
+            improve product interfaces and experiences.
+          </p>
+        </div>
       </div>
-      <!--// bd -->
 
-      <div id="ft">
-        <p>Jonathan Doe &mdash; <a href="mailto:name@yourdomain.com">name@yourdomain.com</a> &mdash; (313) -
-          867-5309</p>
+      <div class="section-edu">
+        <p class="title">Education</p>
+        <h4>Bachelor in Computer Science</h4>
+        <p class="college">Thames International College</p>
+        <p class="date">Aug 2018 - Present</p>
       </div>
-      <!--// footer -->
 
-    </div><!-- // inner -->
+      <div class="section-courses">
+        <p class="title">Additional courses</p>
+        <h4>Be a Fullstack Developer</h4>
+        <p class="course-website">Udemy</p>
+        <p class="date">Aug 2018 - Present</p>
+      </div>
 
+    </div>
 
+    <div class="right-float">
+      <div class="contact-section">
+        <div><span><i class='bx bx-phone'></i></span> +977-9841647895</div>
+        <div><span><i class='bx bx-envelope'></i></span> yours@gmail.com</div>
+        <div><span><i class='bx bx-link'></i></span> www.website.com</div>
+      </div>
+
+      <div class="knowledge-section">
+        <h5>Industry Knowledge</h5>
+        <p>Product Design</p>
+        <p>Debugging</p>
+        <p>Wireframing</p>
+        <p>User Experiences</p>
+      </div>
+
+      <div class="skill-section">
+        <h5>Other Skills</h5>
+        <p>HTML</p>
+        <p>Css</p>
+        <p>Javascript</p>
+        <p>Node Js</p>
+        <p>React Js</p>
+      </div>
+
+      <div class="tool-section">
+        <h5>tools</h5>
+        <p>Figma, Sketch, Protopie,
+          Framer, Invision, Abstract, Zeplin, Google Analytics, Amplitude</p>
+      </div>
+
+      <div class="social-section">
+        <h5>Socials</h5>
+        <div><span><i class='bx bxl-instagram'></i></span> Insta</div>
+        <div><span><i class='bx bxl-linkedin'></i></span> LinkedIn</div>
+        <div><span><i class='bx bxl-twitter'></i></span> Twitter</div>
+      </div>
+    </div>
   </div>
-  <!--// doc -->
-
-
 </body>
 
 </html>
