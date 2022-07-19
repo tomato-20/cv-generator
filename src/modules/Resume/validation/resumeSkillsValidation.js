@@ -8,4 +8,6 @@ const editSkillsSchema = Joi.object({
 
 const validateEditSkills = (data) => editSkillsSchema.validate(data)
 
-module.exports = [validateEditSkills, editSkillsSchema]
+module.exports = {
+    validateSkillsUpdate : validateEditSkills
+}

@@ -9,4 +9,6 @@ const editCertificationSchema = Joi.object({
 
 const validateCertificationSchema = (data) => editCertificationSchema.validate(data)
 
-module.exports = [validateCertificationSchema, editCertificationSchema]
+module.exports = {
+    validateCertificationUpdate : validateCertificationSchema
+}

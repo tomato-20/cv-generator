@@ -12,4 +12,6 @@ const editExperienceSchema = Joi.object({
 
 const validateEditExperience = (data) => editExperienceSchema.validate(data)
 
-module.exports = [validateEditExperience, editExperienceSchema]
+module.exports = {
+   validateExperienceUpdate : validateEditExperience
+}

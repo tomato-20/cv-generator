@@ -11,4 +11,6 @@ const userProfileUpdateValidationSchema = Joi.object({
 
 const validateUserProfileUpdate = (data) => userProfileUpdateValidationSchema.validate(data)
 
-module.exports = [validateUserProfileUpdate, userProfileUpdateValidationSchema]
+module.exports = {
+  validateUserProfileUpdate
+}
