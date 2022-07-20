@@ -45,7 +45,7 @@ const insertResume = async (req, res, next) => {
             let updateUserResumeMap = await User_Resume.updateOne({userId}, {resumeId})
             // TODO [opt] : check if update successfull
         } else {
-            resumeId = user_resume.resumeId
+            resHelper.error(res,'User already have inserted data. please use edit')
         }
 
         // insert basic info into database

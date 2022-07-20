@@ -27,7 +27,7 @@ const prepareExperienceData = (array) => {
     }
     return array.map((item) => {
         if (item.startDate) item.startDate = mapDate(item.startDate);
-        if (item.endDate) item.endDate = mapDate(item.startDate);
+        if (item.endDate) item.endDate = mapDate(item.endDate);
         return item
     })
 }
