@@ -21,7 +21,9 @@ router.post('/edit/certification/:id', authMiddlewere, certificationController.e
 router.post('/edit/skills', authMiddlewere, skillsController.editSkills)
 
 // add routes
-
+router.post('/add/certification',authMiddlewere,certificationController.addCertification)
+router.post('/add/education',authMiddlewere,educationController.addEducation)
+router.post('/add/experience',authMiddlewere,experienceController.addExperience)
 
 // delete routes
 
