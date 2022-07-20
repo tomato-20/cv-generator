@@ -26,7 +26,9 @@ router.post('/add/education',authMiddlewere,educationController.addEducation)
 router.post('/add/experience',authMiddlewere,experienceController.addExperience)
 
 // delete routes
-
+router.delete('/delete/certification/:id',authMiddlewere,certificationController.deleteCertification);
+router.delete('/delete/education/:id',authMiddlewere,educationController.deleteEducation)
+router.delete('/delete/experience/:id',authMiddlewere,experienceController.deleteExperience)
 
 // get routes
 router.get('/getPdf', authMiddlewere, getPdfController)
