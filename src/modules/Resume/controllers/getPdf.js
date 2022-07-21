@@ -1,9 +1,10 @@
 const resHelper = require('../../../helpers/responseHelper')
 
+const fs = require('fs'); 
 const path = require('path');
 const pdf = require('html-pdf')
+const { ObjectId } = require('mongodb');
 const html_to_pdf = require('html-pdf-node')
-const fs = require('fs')
 
 // remove the unrequired fields from the queried data 
 const getFilteredObject = (object) => {
@@ -32,8 +33,13 @@ const prepareExperienceData = (array) => {
     })
 }
 
+// get template file
+const tempateCodeToFile = require('../../../helpers/constants/templates')
+const getTemplateFile = (templateCode) => tempateCodeToFile[templateCode+'']
+ 
 const getPdf = async (req, res, next) => {
     const userId = req.user.id;
+    const templateId = req.query.templateId;
 
     const Users = req.db.collection('users');
     const Profiles = req.db.collection('profiles');
@@ -41,8 +47,15 @@ const getPdf = async (req, res, next) => {
     const Experiences = req.db.collection('experiences');
     const Skills = req.db.collection('skills');
     const Certifications = req.db.collection('certifications');
+    const Templates = req.db.collection('templates');
 
     try {
+
+        let templateCode = 100
+        if(templateId) {
+            let selectedTemplate = await Templates.findOne({_id : ObjectId(templateId)})
+             templateCode = selectedTemplate?.code ? selectedTemplate.code : templateCode;
+        }
 
         Promise.allSettled([
             Users.findOne({ _id: userId }),
@@ -58,9 +71,6 @@ const getPdf = async (req, res, next) => {
 
                 // fetch the user data to generate html 
                 let displayData = {};
-                let temp = [];
-
-
 
                 displayData = {
                     ...getFilteredObject(result[0].value),
@@ -68,15 +78,13 @@ const getPdf = async (req, res, next) => {
                     experiences: prepareExperienceData(await result[2].value.toArray()),
                     education: prepareExperienceData(await result[3].value.toArray()),
                     skills: getFilteredObject(result[4].value),
-                    certifications: await result[5].value.toArray(),
+                    certifications: prepareExperienceData(await result[5].value.toArray()),
                 };
 
-                console.log(displayData)
-
+                console.log(displayData, `${getTemplateFile(templateCode)}/index.ejs`)
 
                 // convert html to pdf
-
-                return res.render('TemplateOne/index.ejs', { user: displayData }, async function (err, html) {
+                return res.render(`${getTemplateFile(templateCode)}/index.ejs`, { user: displayData }, async function (err, html) {
                     if (err) {
                         console.log(err);
                         res.json({ message: err.message })
@@ -100,7 +108,6 @@ const getPdf = async (req, res, next) => {
                         border: { top: "20px", bottom: "20px"}
                     }).toBuffer(function (err, buffer) {
                         if (err) console.log(err)
-                        // fs.writeFileSync('template.pdf',buffer);
                         res.header('content-type', 'application/pdf');
                         res.send(buffer)
                     })

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+  <title>Document</title>
+</head>
+
+<style>
+  * {
+    box-sizing: border-box;
+    font-family: Lato, sans-serif;
+  }
+
+  body {
+    padding: 0px 20px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  p {
+    margin: 0;
+    padding: 0;
+  }
+
+  .date {
+    font-size: 10px;
+    color: #73808D;
+  }
+
+  .org {
+    font-size: 10px;
+    color: #525252;
+  }
+
+  .title {
+    font-size: 10px;
+    font-weight: bold;
+    color: #FF002B;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    padding-bottom: 4px;
+    line-height: 120%;
+  }
+
+  .icon {
+    padding-right: 4px;
+  }
+
+
+
+  @page {
+    size: 5.5in 8.5in;
+  }
+
+
+  @media print {
+    .hello {
+      page-break-after: always;
+    }
+  }
+
+
+
+  .left-float {
+    width: 60%;
+    float: left;
+  }
+
+  .right-float {
+    width: 35%;
+    float: right;
+  }
+
+  /* <--------<headerpart>------------>  */
+  header {
+    padding-bottom: 24px;
+  }
+
+  .header-text h1 {
+    font-size: 20px;
+    padding-bottom: 4px;
+    text-transform: uppercase;
+  }
+
+  .header-text p {
+    font-size: 16px;
+  }
+
+  .header-information p {
+    font-size: 10px;
+    line-height: 145%;
+    color: #525252;
+    padding-bottom: 12px;
+  }
+
+  .header-links {
+    color: #13556C;
+  }
+
+  .header-links__Fspan {
+    padding-right: 8px;
+    font-size: 10px;
+  }
+
+  .header-links__Fspan span {
+    padding-right: 4px;
+  }
+
+  /* <--------</headerpart>------------>  */
+
+
+  /* <--------<bodypart>------------>  */
+
+  /* <--------<left-float>------------>  */
+
+
+
+  .experiences {
+    padding-bottom: 12px;
+  }
+
+
+  .experiences h4 {
+    font-size: 13px;
+    font-weight: bold;
+  }
+
+  .experiences__infoz {
+    font-size: 10px;
+  }
+
+  .experiences__infoz-1 {
+    padding-right: 8px;
+  }
+
+  .experiences p {
+    display: inline-block;
+  }
+
+  .experiences .org {
+    padding: 4px 0;
+  }
+
+  .experiences .details {
+    font-size: 13px;
+    padding-top: 4px;
+  }
+
+  .experiences:last-child {
+    padding-bottom: 24px;
+  }
+
+  .bullet-details ul {
+    font-size: 10px;
+    padding-left: 16px;
+    margin: 0;
+    margin-top: 4px;
+  }
+
+
+  /* <--------</left-float>------------>  */
+
+  /* <--------</bodypart>------------>  */
+
+
+
+  /* <--------<right-float>------------>  */
+
+  .skill-section p {
+    font-size: 10px;
+  }
+
+  .secondary-title {
+    font-size: 12px;
+    padding-bottom: 6px;
+    font-weight: bold;
+  }
+
+  .skill-section__skills {
+    padding-bottom: 8px;
+  }
+
+  .skill-section__skills ul,
+  .skill-section__tools ul {
+    font-size: 10px;
+    padding-left: 16px;
+    margin: 0;
+    margin-bottom: 0px;
+  }
+
+  .contact-section div {
+    font-size: 12px;
+    color: #6A7581;
+  }
+
+  .contact-section span {
+    padding-right: 4px;
+  }
+
+  .contact-section,
+  .knowledge-section,
+  .skill-section,
+  .tool-section {
+    padding-bottom: 12px;
+  }
+
+
+
+  .section-edu {
+    padding-bottom: 8px;
+  }
+
+  .section-edu div {
+    padding-bottom: 8px;
+  }
+
+  .section-edu h4 {
+    font-size: 10px;
+    font-weight: bold;
+  }
+
+  .section-edu .college {
+    font-size: 10px;
+    padding: 4px 0;
+  }
+
+  .section-courses h4 {
+    font-size: 10px;
+    font-weight: bold;
+  }
+
+  .section-courses div {
+    padding-bottom: 12px;
+  }
+
+  .course-website {
+    font-size: 10px;
+    padding: 4px 0;
+  }
+
+  /* <--------</right-float>------------>  */
+</style>
+
+<body>
+  <header>
+    <div class="header-text">
+      <h1>
+        <%= user.fullname%>
+      </h1>
+      <p class="title">
+        <%= user.role %>
+      </p>
+
+      <div class="header-information">
+        <p>
+          <%= user.summary %>
+        </p>
+      </div>
+
+      <div class="header-links">
+        <span class="header-links__Fspan"><span><i class='bx bx-envelope'></i></span>
+          <%= user.email %>
+        </span>
+        <span class="header-links__Fspan"><span><span><i class='bx bx-link'></i></span> <a
+              href='<%= user.website %>'>website</a></span></span>
+        <span class="header-links__Fspan"><span><span><i class='bx bx-phone'></i></span>
+            <%= user.phone %>
+          </span></span>
+        <% if (user?.social?.length) { %>
+          <% user.social.forEach( function(profile) { %>
+            <%- include('profile', {profile: profile}) %>
+              <% }) %>
+                <% } %>
+      </div>
+    </div>
+  </header>
+
+  <div class="body-section">
+    <div class="left-float">
+      <% if (user?.experiences?.length) { %>
+        <div class="section-exp">
+          <p class="title">Experience</p>
+          <% user.experiences.forEach( function(experience) { %>
+            <%- include('experience', {experience: experience}) %>
+              <% }) %>
+
+        </div>
+        <% }%>
+    </div>
+
+    <div class="right-float">
+
+      <div class="skill-section">
+        <h5 class="title">Skills</h5>
+
+        <% if (user.skills?.industryKnowledge) { %>
+          <div class="skill-section__skills">
+            <p class="secondary-title">Industry Knowledge</p>
+            <p class="skill-section__skills-detail">
+              <%= user.skills.industryKnowledge.join(', ')%></p>
+          </p>
+        </div>
+        <% } %>
+
+        <% if (user.skills?.programmingSkills) { %>
+        <div class="skill-section__skills">
+          <p class="secondary-title">Programming Skills</p>
+          <ul>
+            <% user.skills.programmingSkills.forEach( function(skill) { %>
+              <li><%= skill %></li>
+                <% }) %>
+          </ul>
+          <% } %>
+
+        </div>
+
+        <% if (user.skills?.tools) { %>
+        <div class="skill-section__tools">
+          <p class="secondary-title">Tools</p>
+          <ul>
+            <% user.skills.tools.forEach( function(tool) { %>
+              <li><%= tool %></li>
+                <% }) %>
+          </ul>
+        </div>
+        <% } %>
+
+      </div>
+
+      <% if (user?.education?.length) { %>
+        <div class="section-edu">
+          <p class="title">Education</p>
+          <% user.education?.forEach( function(education) { %>
+            <%- include('education', {education: education}) %>
+          <% }) %>
+        </div>
+      <% } %>
+
+      <% if (user?.certifications?.length) { %>
+        <div class="section-courses">
+          <p class="title">Certification</p>
+          <% user.certifications?.forEach( function(certification) { %>
+            <%- include('certification', {certification: certification}) %>
+          <% }) %>
+        </div>
+      <% } %>
+
+      </div>
+    </div>
+</body>
+
+</html>

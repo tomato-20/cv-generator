@@ -1,0 +1,17 @@
+[
+    {
+        "code": 100,
+        "path": "templates/Template1.png",
+        "title": "Template One"
+    },
+    {
+        "code": 200,
+        "path": "templates/Template2.png",
+        "title": "Template Two"
+    },
+    {
+        "code": 300,
+        "path": "templates/Template3.png",
+        "title": "Template Three"
+    }
+]
