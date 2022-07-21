@@ -23,7 +23,7 @@ app.use(express.urlencoded({
   extended : false
 }))
 
-// serve html templates
+// serve html templates view engine
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'views'))
 

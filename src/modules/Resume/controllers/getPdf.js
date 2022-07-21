@@ -76,7 +76,7 @@ const getPdf = async (req, res, next) => {
 
                 // convert html to pdf
 
-                return res.render('TemplateOne/index.ejs', { user: displayData }, async function (err, html) {
+                return res.render('TemplateTwo/index.ejs', { user: displayData }, async function (err, html) {
                     if (err) {
                         console.log(err);
                         res.json({ message: err.message })

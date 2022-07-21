@@ -213,8 +213,10 @@
 <body>
   <header>
     <div class="header-text">
-      <h1>Your Name</h1>
-      <p>Backend Developer</p>
+      <div class="user-info--name"><%= user.fullname %></div>
+      
+      <div class="user-info--role"><%= user.role %></div>
+      
     </div>
   </header>
 
@@ -304,9 +306,11 @@
 
       <div class="social-section">
         <h5>Socials</h5>
-        <div><span><i class='bx bxl-instagram'></i></span> Insta</div>
-        <div><span><i class='bx bxl-linkedin'></i></span> LinkedIn</div>
-        <div><span><i class='bx bxl-twitter'></i></span> Twitter</div>
+        <% if (user?.social?.length) { %>
+          <% user.social.forEach( function(profile) { %>
+            <%- include('socials', {profile: profile}) %>
+              <% }) %>
+                <% } %>
       </div>
     </div>
   </div>
