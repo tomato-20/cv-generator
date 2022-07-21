@@ -1,0 +1,21 @@
+<div class="experiences">
+  <h4><%= experience.position %></h4>
+  <span class="experiences__infoz">
+    <span class="experiences__infoz-1"><span class="icon"><i class='bx bx-building-house'></i></span>
+      <p class="org"><%= experience.organization %></p>
+    </span>
+    <span class="experiences__infoz-2"><span class="icon"><i class='bx bx-calendar'></i></span>
+      <p class="date"> <%= experience.startDate %> - <%= experience.endDate %></p>
+    </span>
+  </span>
+
+  <div class="bullet-details">
+    <ul>
+      <% if (!!experience.description.length) { %>
+        <% experience.description.forEach( function(descriptionItem) { %>
+          <li><%= descriptionItem %></li>
+        <% }) %>
+      <% } %>
+    </ul>
+  </div>
+</div>
