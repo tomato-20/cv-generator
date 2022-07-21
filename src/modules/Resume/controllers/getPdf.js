@@ -87,7 +87,7 @@ const getPdf = async (req, res, next) => {
                 return res.render(`${getTemplateFile(templateCode)}/index.ejs`, { user: displayData }, async function (err, html) {
                     if (err) {
                         console.log(err);
-                        res.json({ message: err.message })
+                        res.json({success:false, message: err.message })
                     }
 
                     /* html_to_pdf.generatePdf({ content: html },
@@ -116,7 +116,7 @@ const getPdf = async (req, res, next) => {
 
 
             })
-            .catch(error => { console.log(error) })
+            .catch(error => { console.log(error) ;next(err) })
 
 
 
