@@ -1,0 +1,18 @@
+<div class="all-experience">
+  <div class="experiences-first">
+    <h4><%=experience.position%></h4>
+    <p class="org"><%= experience.organization %></p>
+    <p class="date"><%= experience.startDate %> - <%= experience.endDate %></p>
+    <p class="details"><%= experience.details %></p>
+  </div>
+  <div class="experience-second">
+    <div>
+      <ul>
+        <% if (!!experience.description.length) { %> <%
+        experience.description.forEach( function(descriptionItem) { %>
+        <li><%= descriptionItem %></li>
+        <% }) %> <% } %>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -84,13 +84,14 @@ const getPdf = async (req, res, next) => {
                 console.log(displayData, `${getTemplateFile(templateCode)}/index.ejs`)
 
                 // convert html to pdf
+
                 return res.render(`${getTemplateFile(templateCode)}/index.ejs`, { user: displayData }, async function (err, html) {
                     if (err) {
                         console.log(err);
                         res.json({success:false, message: err.message })
                     }
 
-                    /* html_to_pdf.generatePdf({ content: html },
+                    html_to_pdf.generatePdf({ content: html },
                         { format: 'A4', margin: { top: "20px", bottom: "20px", right: "20px", left: "20px" } })
                         .then(pdfBuffer => {
 
@@ -100,23 +101,26 @@ const getPdf = async (req, res, next) => {
                         })
                         .catch(error => {
                             console.log(error)
-                        }); */
+                        });
 
                     console.log('jjf')
-                    pdf.create(html, {
+                   /*  pdf.create(html, {
                         format: "A4",
                         border: { top: "20px", bottom: "20px"}
                     }).toBuffer(function (err, buffer) {
                         if (err) console.log(err)
                         res.header('content-type', 'application/pdf');
                         res.send(buffer)
-                    })
+                    }) */
               
                 })
 
 
             })
-            .catch(error => { console.log(error) ;next(err) })
+            .catch(error => { 
+                console.log(error) ;
+                next(err) 
+            })
 
 
 
