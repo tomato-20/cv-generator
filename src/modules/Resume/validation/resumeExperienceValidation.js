@@ -1,4 +1,4 @@
-const Joi = require('joi');
+const Joi = require('joi').extend(require('@joi/date'));
 
 const editExperienceSchema = Joi.object({
     organization: Joi.string(),
@@ -6,8 +6,8 @@ const editExperienceSchema = Joi.object({
     location : Joi.string(),
     summary : Joi.string().max(300),
     description : Joi.array().items(Joi.string().max(300)).max(8),
-    startDate : Joi.date(),
-    endDate : Joi.date(),
+    startDate : Joi.date().format('YYYY-MM-DD').required().label('startDate must be of format YYYY-MM-DD'),
+    endDate :Joi.alternatives().try(Joi.string().valid('present'),Joi.date().format('YYYY-MM-DD')).required().label('endDate must be of format YYYY-MM-DD or be "present" string'),
 })
 const addExperienceSchema = Joi.object({
     resumeId: Joi.string().uuid().required(),
@@ -16,8 +16,8 @@ const addExperienceSchema = Joi.object({
     location : Joi.string().required(),
     summary : Joi.string().max(300).required(),
     description : Joi.array().items(Joi.string().max(300)).max(8),
-    startDate : Joi.date().required(),
-    endDate: Joi.alternatives().try(Joi.string().valid('present'), Joi.date()).label('endDate'),
+    startDate : Joi.date().format('YYYY-MM-DD').required().label('startDate must be of format YYYY-MM-DD'),
+    endDate :Joi.alternatives().try(Joi.string().valid('present'),Joi.date().format('YYYY-MM-DD')).required().label('endDate must be of format YYYY-MM-DD or be "present" string'),
 })
 
 const validateEditExperience = (data) => editExperienceSchema.validate(data)

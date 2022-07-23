@@ -1,18 +1,18 @@
-const Joi = require('joi');
+const Joi = require('joi').extend(require('@joi/date'));
 
 const editCertificationSchema = Joi.object({
     institution: Joi.string().label('institution'),
     course: Joi.string().label('course'),
-    startDate : Joi.date().label('startDate'),
-    endDate : Joi.date().label('endDate'),
+    startDate : Joi.date().format('YYYY-MM-DD').required().label('startDate must be of format YYYY-MM-DD'),
+    endDate : Joi.date().format('YYYY-MM-DD').required().label('endDate must be of format YYYY-MM-DD'),
 })
 
 const addCertificationSchema = Joi.object({
     resumeId : Joi.string().required().uuid(),
     institution: Joi.string().required().label('institution'),
     course: Joi.string().required().label('course'),
-    startDate : Joi.date().required().label('startDate'),
-    endDate : Joi.date().required().label('endDate'),
+    startDate : Joi.date().format('YYYY-MM-DD').required().label('startDate must be of format YYYY-MM-DD'),
+    endDate : Joi.date().format('YYYY-MM-DD').required().label('endDate must be of format YYYY-MM-DD'),
 })
 
 const validateCertificationSchema = (data) => editCertificationSchema.validate(data)
