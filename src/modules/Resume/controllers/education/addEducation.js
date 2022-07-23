@@ -21,7 +21,7 @@ const addEducation = async (req, res, next) => {
 
         const insertDbResult = await Education.insertOne({...prepareSingleEducationInsertData(req.body,userId,resumeId)})
 
-        return resHelper.successResponse(res,'Certification insert successfull', insertDbResult.insertedId)
+        return resHelper.successResponse(res,'Certification insert successfull', {id : insertDbResult.insertedId})
 
     } catch (error) {
         next(error)
