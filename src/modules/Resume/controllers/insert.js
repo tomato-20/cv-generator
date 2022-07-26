@@ -19,7 +19,7 @@ const insertResume = async (req, res, next) => {
     const Certifications = req.db.collection('certifications')
     const Skills = req.db.collection('skills');
     const User_Resume = req.db.collection('user_resume')
-    const resumeInsertData  = req.body;
+    const resumeInsertData = req.body;
     const userId = req.user.id
     let promises = []
 
@@ -33,19 +33,19 @@ const insertResume = async (req, res, next) => {
         let existUser = await Users?.findOne({ _id: userId });
         if (!existUser) return resHelper.errorResponse(res, 'User Doesnot Exist!', 400)
 
-        let user_resume = await User_Resume.findOne({userId})
+        let user_resume = await User_Resume.findOne({ userId })
 
         // make update to user_resume mapping table if necessary
         let resumeId = uuid();
 
-        if(!user_resume) {
-            let insertUserResumeMap = await User_Resume.insertOne({userId, resumeId}); 
+        if (!user_resume) {
+            let insertUserResumeMap = await User_Resume.insertOne({ userId, resumeId });
             // TODO [opt] : check if insertSuccessfull 
         } else if (!user_resume.resumeId) {
-            let updateUserResumeMap = await User_Resume.updateOne({userId}, {resumeId})
+            let updateUserResumeMap = await User_Resume.updateOne({ userId }, { $set: { resumeId } })
             // TODO [opt] : check if update successfull
         } else {
-            resHelper.errorResponse(res,'User already have inserted data. please use edit')
+            return resHelper.errorResponse(res, 'User already have inserted data. please use edit')
         }
 
         // insert basic info into database
@@ -89,9 +89,12 @@ const insertResume = async (req, res, next) => {
             ]
         )
             .then(result => console.log(result))
-            .catch(error => console.log(error))
+            .catch(error => {
+                console.log(error);
+                return resHelper.errorResponse(res, 'Cannot insert Data please try again')
+            })
 
-        return resHelper.successResponse(res, 'POST resume')
+        return resHelper.successResponse(res, 'resume data inserted')
     } catch (error) {
         next(error)
     }

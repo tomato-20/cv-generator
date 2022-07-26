@@ -3,8 +3,12 @@ const resHelper = require('../../../helpers/responseHelper')
 // remove the unrequired fields from the queried data 
 const getFilteredObject = (object) => {
     if (!object || !Object.keys(object).length) return object
-    let { _id, createdAt, createdBy, deletedBy, deletedAt, updatedAt, updatedBy, ...filteredData } = object;
+    let { _id, createdBy, deletedBy, deletedAt,userId,resumeId, updatedBy, ...filteredData } = object;
     filteredData.id = _id;
+    if(filteredData.startDate) filteredData.startDate = filteredData.startDate.toLocaleString('en-CA').split(',')[0];
+    if(filteredData.endDate) {
+        filteredData.endDate = filteredData.endDate == 'present' ? filteredData.endDate : filteredData.endDate.toLocaleString('en-CA').split(',')[0]
+    }
     return filteredData;
 }
 
@@ -38,11 +42,12 @@ const getAllUserData = async (req, res, next) => {
 
                 displayData = {
                     ...getFilteredObject(result[0].value),
-                    social: await result[1].value.toArray(),
-                    experiences: (await result[2].value.toArray()),
-                    education: (await result[3].value.toArray()),
+                    social: ([...await result[1].value.toArray()]).map(profile=> getFilteredObject({...profile})),
+                    experiences: ([...await result[2].value.toArray()]).map(experience=> getFilteredObject({...experience})),
+                    education: ([...await result[3].value.toArray()]).map(education=> getFilteredObject({...education})),
                     skills: getFilteredObject(result[4].value),
-                    certifications: await result[5].value.toArray(),
+                    certifications: ([...await result[5].value.toArray()]).map(certification=> getFilteredObject({...certification})),
+                    userId
                 };
 
                 console.log(displayData)
