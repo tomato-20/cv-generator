@@ -1,9 +1,11 @@
 require('dotenv').config();
+const fs = require('fs')
 const cors = require('cors');
 const path = require('path');
 const express = require('express');
 
-
+const swaggerUI = require('swagger-ui-express'),
+  swaggerDocument = require('./api-docs/swagger.json')
 
 const indexRouter = require('./modules/indexRouter')
 // const ResponseError = require('./helpers/errors');
@@ -22,6 +24,8 @@ app.use(express.json());
 app.use(express.urlencoded({
   extended : false
 }))
+
+app.use('/api-docs',swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
 // serve html templates view engine
 app.set('view engine','ejs');
@@ -47,8 +51,13 @@ app.use('/*', (req,res,next)=>{
     })
 })
 
+// api docs
+
+
 // error handles
 app.use(genericErrorHandler)
+
+
 
 module.exports = app;
 

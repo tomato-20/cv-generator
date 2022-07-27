@@ -35,7 +35,7 @@ const getAllUserData = async (req, res, next) => {
 
         ])
             .then(async result => {
-                console.log(result);
+                // console.log(result);
 
                 // fetch the user data to generate html 
                 let displayData = {};
@@ -50,7 +50,7 @@ const getAllUserData = async (req, res, next) => {
                     userId
                 };
 
-                console.log(displayData)
+                // console.log(displayData)
 
                 return resHelper.successResponse(res, 'User Data fetch success!', displayData)
             })
