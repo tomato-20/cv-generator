@@ -11,20 +11,20 @@ module.exports = (req, res, next) => {
       req.query.token;
 
     if (!token) return resHelper.errorResponse(res, "Token is required", 401);
+    
+    let decoded = jwt.verify(token, TOKEN_SECRET);
 
-    jwt.verify(token, TOKEN_SECRET, function (err, decoded) {
-      if (err)
-        return resHelper.errorResponse(
-          res,
-          err.message || "Invalid Token",
-          401
-        );
-
-      req.user = decoded;
-    });
+    req.user = decoded;
 
     next();
   } catch (error) {
+    if(error.name == 'JsonWebTokenError' || error.name == 'TokenExpiredError') {
+      return resHelper.errorResponse(
+              res,
+              error.message || "Invalid Token",
+              401
+            );
+    }
     next(error);
   }
 };
