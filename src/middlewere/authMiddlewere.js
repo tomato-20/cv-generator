@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const { StatusCodes } = require('http-status-codes')
 
 const { TOKEN_SECRET } = require("../config/app.config");
 const resHelper = require("../helpers/responseHelper");
@@ -10,7 +11,7 @@ module.exports = (req, res, next) => {
       req.headers["Authorization"] ||
       req.query.token;
 
-    if (!token) return resHelper.errorResponse(res, "Token is required", 401);
+    if (!token) return resHelper.errorResponse(res, "Token is required", StatusCodes.UNAUTHORIZED);
     
     let decoded = jwt.verify(token, TOKEN_SECRET);
 
@@ -22,7 +23,7 @@ module.exports = (req, res, next) => {
       return resHelper.errorResponse(
               res,
               error.message || "Invalid Token",
-              401
+              StatusCodes.UNAUTHORIZED
             );
     }
     next(error);

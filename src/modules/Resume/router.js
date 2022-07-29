@@ -14,11 +14,11 @@ const authMiddlewere = require('../../middlewere/authMiddlewere');
 router.post('/', authMiddlewere, insertResumeController)
 
 // edit routes
-router.post('/edit/profile', authMiddlewere, profileController.editProfile)
-router.post('/edit/experience/:id', authMiddlewere, experienceController.editExperience)
-router.post('/edit/education/:id', authMiddlewere, educationController.editEducation)
-router.post('/edit/certification/:id', authMiddlewere, certificationController.editCertification)
-router.post('/edit/skills', authMiddlewere, skillsController.editSkills)
+router.put('/edit/profile', authMiddlewere, profileController.editProfile)
+router.put('/edit/experience/:id', authMiddlewere, experienceController.editExperience)
+router.put('/edit/education/:id', authMiddlewere, educationController.editEducation)
+router.put('/edit/certification/:id', authMiddlewere, certificationController.editCertification)
+router.put('/edit/skills', authMiddlewere, skillsController.editSkills)
 
 // add routes
 router.post('/add/certification',authMiddlewere,certificationController.addCertification)

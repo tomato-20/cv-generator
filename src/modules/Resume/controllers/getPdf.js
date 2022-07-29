@@ -50,7 +50,6 @@ const getPdf = async (req, res, next) => {
     const Templates = req.db.collection('templates');
 
     try {
-
         let templateCode = 100
         if(templateId) {
             let selectedTemplate = await Templates.findOne({_id : ObjectId(templateId)})
@@ -91,7 +90,7 @@ const getPdf = async (req, res, next) => {
                         res.json({success:false, message: err.message })
                     }
 
-                    html_to_pdf.generatePdf({ content: html },
+                    /* html_to_pdf.generatePdf({ content: html },
                         { format: 'A4', margin: { top: "20px", bottom: "20px", right: "20px", left: "20px" } })
                         .then(pdfBuffer => {
 
@@ -101,17 +100,17 @@ const getPdf = async (req, res, next) => {
                         })
                         .catch(error => {
                             console.log(error)
-                        });
+                        }); */
 
                     console.log('jjf')
-                   /*  pdf.create(html, {
+                    pdf.create(html, {
                         format: "A4",
                         border: { top: "20px", bottom: "20px"}
                     }).toBuffer(function (err, buffer) {
                         if (err) console.log(err)
                         res.header('content-type', 'application/pdf');
                         res.send(buffer)
-                    }) */
+                    })
               
                 })
 

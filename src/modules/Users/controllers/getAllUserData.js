@@ -22,8 +22,17 @@ const getAllUserData = async (req, res, next) => {
     const Experiences = req.db.collection('experiences');
     const Skills = req.db.collection('skills');
     const Certifications = req.db.collection('certifications');
+    const User_Resume = req.db.collection('user_resume')
+
 
     try {
+
+        let user_resume = await User_Resume.findOne({userId})
+        let resumeId = undefined;
+        if(user_resume) {
+            resumeId = user_resume.resumeId;
+        } 
+
 
         Promise.allSettled([
             Users.findOne({ _id: userId }),
@@ -47,7 +56,8 @@ const getAllUserData = async (req, res, next) => {
                     education: ([...await result[3].value.toArray()]).map(education=> getFilteredObject({...education})),
                     skills: getFilteredObject(result[4].value),
                     certifications: ([...await result[5].value.toArray()]).map(certification=> getFilteredObject({...certification})),
-                    userId
+                    userId,
+                    resumeId
                 };
 
                 // console.log(displayData)
