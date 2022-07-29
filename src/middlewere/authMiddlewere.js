@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
-
 const { TOKEN_SECRET } = require("../config/app.config");
+
 const resHelper = require("../helpers/responseHelper");
 
 module.exports = (req, res, next) => {
@@ -12,19 +12,25 @@ module.exports = (req, res, next) => {
 
     if (!token) return resHelper.errorResponse(res, "Token is required", 401);
 
-    jwt.verify(token, TOKEN_SECRET, function (err, decoded) {
-      if (err)
-        return resHelper.errorResponse(
-          res,
-          err.message || "Invalid Token",
-          401
-        );
+    let decoded = jwt.verify(token, TOKEN_SECRET);
 
-      req.user = decoded;
-    });
+    req.user = decoded;
 
     next();
   } catch (error) {
+    if (
+      error.name == "JsonWebTokenError" ||
+      error.name == "TokenExpiredError"
+    ) {
+      return resHelper.errorResponse(
+        res,
+
+        error.message || "Invalid Token",
+
+        401
+      );
+    }
+
     next(error);
   }
 };
