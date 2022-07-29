@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
-
 const { TOKEN_SECRET } = require("../config/app.config");
+
 const resHelper = require("../helpers/responseHelper");
 
 module.exports = (req, res, next) => {
@@ -25,6 +25,7 @@ module.exports = (req, res, next) => {
               401
             );
     }
+
     next(error);
   }
 };

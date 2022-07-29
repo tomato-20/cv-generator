@@ -3,7 +3,8 @@ const cors = require('cors');
 const path = require('path');
 const express = require('express');
 
-
+const swaggerUi = require("swagger-ui-express");
+const swggerJSDoc = require("swagger-jsdoc");
 
 const indexRouter = require('./modules/indexRouter')
 // const ResponseError = require('./helpers/errors');
@@ -37,6 +38,9 @@ app.use((req,res,next)=>{
 
 //dir for template images
 app.use( express.static("public"))
+
+//for swagger
+// app.use('/api-docs',swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use('/api/v1',indexRouter)  
 

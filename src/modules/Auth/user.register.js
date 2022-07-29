@@ -18,7 +18,7 @@ exports.createUser = async (req, res, next) => {
     const { fullname, email, password, phone, address } = req.body;
 
     //to validate input
-    if ((!fullname && !email && !password && !phone && !address)) {
+    if (!(!fullname && !email && !password && !phone && !address)) {
       return responseHelper.errorResponse(res, "Input is required!!", 400);
     }
 

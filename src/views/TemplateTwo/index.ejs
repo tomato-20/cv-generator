@@ -260,30 +260,23 @@
         <% if (user.skills?.industryKnowledge) { %>
         <div class="knowledge-section">
           <h5>Industry Knowledge</h5>
-          <p>Product Design</p>
-          <p>Debugging</p>
-          <p>Wireframing</p>
-          <p>User Experiences</p>
-          <p><%= user.skills.industryKnowledge.join(', ')%></p>
+          <% user.skills.industryKnowledge.forEach(function(industryKnowledge){ %>
+            <p><%=industryKnowledge%></p>
+          <% }) %>
         </div>
-        <% } %> <% if (user.skills?.skillSection) { %>
+        
+        <% } %> <% if (user.skills?.programmingSkills) { %>
         <div class="skill-section">
           <h5>Other Skills</h5>
-          <p>HTML</p>
-          <p>Css</p>
-          <p>Javascript</p>
-          <p>Node Js</p>
-          <p>React Js</p>
-          <p><%= user.skills.skillSection.join(' , ')%></p>
+          <% user.skills.programmingSkills.forEach(function(programmingSkills){ %>
+            <p><%=programmingSkills%></p>
+          <% }) %>
         </div>
-        <% } %> <% if (user.skills?.knowledgeTools) { %>
+       
+        <% } %> <% if (user.skills?.tools) { %>
         <div class="tool-section">
           <h5>tools</h5>
-          <p>
-            Figma, Sketch, Protopie, Framer, Invision, Abstract, Zeplin, Google
-            Analytics, Amplitude
-          </p>
-          <p><%= user.skills.knowledgeTools.join(' , ')%></p>
+          <p><%= user.skills.tools.join(' , ')%></p>
         </div>
         <% } %>
 
