@@ -5,6 +5,9 @@ const { compare } = require("./helpers/compare-password");
 exports.login = async (req, res, next) => {
   let isPasswordValid = false;
   const { email, password } = req.body;
+  if(!(email && password)){
+    return responseHelper.errorResponse(res, "Input is required!!", 400);
+  }
   try {
     const existedUser = await req.db.collection("users").findOne({ email });
 
