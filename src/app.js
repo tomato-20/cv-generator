@@ -1,14 +1,17 @@
 require('dotenv').config();
-const fs = require('fs')
-const cors = require('cors');
-const path = require('path');
-const express = require('express');
+const fs = require('fs'),
+  path = require('path')
+  cors = require('cors'),
+  express = require('express'),
+  morgan = require('morgan')
 
 const swaggerUI = require('swagger-ui-express'),
-  swaggerDocument = require('./api-docs/swagger.json')
+  swaggerDocument = require('./api-docs/index')
+  // swaggerDocument = require('./api-docs/swagger.json')
 
-const indexRouter = require('./modules/indexRouter')
-// const ResponseError = require('./helpers/errors');
+const indexRouter = require('./modules/indexRouter'),
+  healthcheckRouter = require('./modules/healthcheck')
+
 const databaseHelper = require('./helpers/dbHelper');
 const genericErrorHandler = require('./middlewere/genericErrorHandler');
 
@@ -18,13 +21,13 @@ databaseHelper.init(app)
 
 app.options('*',cors());
 app.use(cors())
-
-// parse req body 
 app.use(express.json());
 app.use(express.urlencoded({
   extended : false
 }))
 
+
+// api docs
 app.use('/api-docs',swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
 // serve html templates view engine
@@ -39,23 +42,21 @@ app.use((req,res,next)=>{
   next();
 })
 
+app.use(morgan('dev'));
+
 //dir for template images
 app.use( express.static("public"))
 
-//for swagger
-// app.use('/api-docs',swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
 app.use('/api/v1',indexRouter)  
 
-// 404 error
+app.use('/healthcheck', healthcheckRouter )
+
+// page not found 
 app.use('/*', (req,res,next)=>{
     res.status(404).json({
         message: `Cannot ${req.method}. ${req.originalUrl} Not found`
     })
 })
-
-// api docs
-
 
 // error handles
 app.use(genericErrorHandler)

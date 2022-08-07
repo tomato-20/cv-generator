@@ -6,8 +6,8 @@ const editExperienceSchema = Joi.object({
     location : Joi.string(),
     summary : Joi.string().max(300),
     description : Joi.array().items(Joi.string().max(300)).max(8),
-    startDate : Joi.date().format('YYYY-MM-DD').required().label('startDate must be of format YYYY-MM-DD'),
-    endDate :Joi.alternatives().try(Joi.string().valid('present'),Joi.date().format('YYYY-MM-DD')).required().label('endDate must be of format YYYY-MM-DD or be "present" string'),
+    startDate : Joi.date().format('YYYY-MM-DD').label('startDate must be of format YYYY-MM-DD'),
+    endDate :Joi.alternatives().try(Joi.string().valid('present'),Joi.date().format('YYYY-MM-DD')).label('endDate must be of format YYYY-MM-DD or be "present" string'),
 })
 const addExperienceSchema = Joi.object({
     resumeId: Joi.string().uuid().required(),

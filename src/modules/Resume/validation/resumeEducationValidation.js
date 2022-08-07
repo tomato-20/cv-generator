@@ -3,8 +3,8 @@ const Joi = require('joi').extend(require('@joi/date'));
 const editEducationSchema = Joi.object({
     institution: Joi.string().label('institution'),
     course: Joi.string().label('course'),
-    startDate : Joi.date().format('YYYY-MM-DD').required().label('startDate must be of format YYYY-MM-DD'),
-        endDate : Joi.alternatives().try(Joi.string().valid('present'),Joi.date().format('YYYY-MM-DD')).required().label('endDate must be of format YYYY-MM-DD or be "present" string'),
+    startDate : Joi.date().format('YYYY-MM-DD').label('startDate must be of format YYYY-MM-DD'),
+        endDate : Joi.alternatives().try(Joi.string().valid('present'),Joi.date().format('YYYY-MM-DD')).label('endDate must be of format YYYY-MM-DD or be "present" string'),
     location: Joi.string().label('location')
 })
 

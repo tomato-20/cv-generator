@@ -35,5 +35,8 @@
         "swagger-jsdoc": "^6.2.1",
         "swagger-ui-express": "^4.5.0",
         "uuid": "^8.3.2"
+    },
+    "devDependencies": {
+        "morgan": "^1.10.0"
     }
 }

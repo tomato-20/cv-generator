@@ -1,11 +1,11 @@
 ((ResponseHelper) => {
     const { StatusCodes } = require('http-status-codes')
+    ResponseHelper.successResponse = (res, message, data = undefined , status) => {
 
-    ResponseHelper.successResponse = (res, message, data) => {
-        return res.status(StatusCodes.OK).json({
+        return res.status(status || StatusCodes.OK).json({
             success: true,
             data,
-            status: StatusCodes.OK,
+            status: status || StatusCodes.OK ,
             message
         })
     },

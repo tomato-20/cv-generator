@@ -1,12 +1,13 @@
 const jwt = require("jsonwebtoken");
+const {StatusCodes} = require('http-status-codes')
 const responseHelper = require("../../helpers/responseHelper");
 const { compare } = require("./helpers/compare-password");
 
 exports.login = async (req, res, next) => {
   let isPasswordValid = false;
   const { email, password } = req.body;
-  if(!(email && password)){
-    return responseHelper.errorResponse(res, "Input is required!!", 400);
+  if (!(email && password)) {
+    return responseHelper.errorResponse(res, "Input is required!!");
   }
   try {
     const existedUser = await req.db.collection("users").findOne({ email });
@@ -15,7 +16,7 @@ exports.login = async (req, res, next) => {
       isPasswordValid = await compare(password, existedUser.password);
     }
     if (!existedUser || !isPasswordValid)
-      return responseHelper.errorResponse(res, "Invalid credentials");
+      return responseHelper.errorResponse(res, "Invalid credentials", StatusCodes.UNAUTHORIZED);
 
     const oldToken = await req.db.collection("token").findOne({ userId: existedUser._id });
 

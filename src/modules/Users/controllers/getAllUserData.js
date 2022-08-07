@@ -5,6 +5,7 @@ const getFilteredObject = (object) => {
     if (!object || !Object.keys(object).length) return object
     let { _id, createdBy, deletedBy, deletedAt,userId,resumeId, updatedBy, ...filteredData } = object;
     filteredData.id = _id;
+    if(filteredData.password) filteredData.password = undefined
     if(filteredData.startDate) filteredData.startDate = filteredData.startDate.toLocaleString('en-CA').split(',')[0];
     if(filteredData.endDate) {
         filteredData.endDate = filteredData.endDate == 'present' ? filteredData.endDate : filteredData.endDate.toLocaleString('en-CA').split(',')[0]
@@ -33,12 +34,11 @@ const getAllUserData = async (req, res, next) => {
             resumeId = user_resume.resumeId;
         } 
 
-
         Promise.allSettled([
             Users.findOne({ _id: userId }),
             Profiles.find({ userId }),
-            Experiences.find({ userId }),
-            Education.find({ userId }),
+            Experiences.find({ userId }).sort({startDate : -1}),
+            Education.find({ userId }).sort({startDate : -1}),
             Skills.findOne({ userId }),
             Certifications.find({ userId }),
 
@@ -56,7 +56,6 @@ const getAllUserData = async (req, res, next) => {
                     education: ([...await result[3].value.toArray()]).map(education=> getFilteredObject({...education})),
                     skills: getFilteredObject(result[4].value),
                     certifications: ([...await result[5].value.toArray()]).map(certification=> getFilteredObject({...certification})),
-                    userId,
                     resumeId
                 };
 

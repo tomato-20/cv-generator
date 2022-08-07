@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const {StatusCodes} = require('http-status-codes')
 const responseHelper = require("../../helpers/responseHelper");
 const { prepareInsertData } = require("./helpers/data-process.db.helper");
 const uuid = require("uuid");
@@ -18,7 +19,7 @@ exports.createUser = async (req, res, next) => {
     const { fullname, email, password, phone, address } = req.body;
 
     //to validate input
-    if (!(!fullname && !email && !password && !phone && !address)) {
+    if (!(fullname && email && password && phone && address)) {
       return responseHelper.errorResponse(res, "Input is required!!", 400);
     }
 
@@ -52,7 +53,7 @@ exports.createUser = async (req, res, next) => {
         resumeId: null,
         selected: null,
       });
-      return responseHelper.successResponse(res, "User registered sucessfully");
+      return responseHelper.successResponse(res, "User registered sucessfully",'',StatusCodes.CREATED);
     }
 
     return responseHelper.errorResponse(res, "User registration failed");

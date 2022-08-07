@@ -3,8 +3,8 @@ const Joi = require('joi').extend(require('@joi/date'));
 const editCertificationSchema = Joi.object({
     institution: Joi.string().label('institution'),
     course: Joi.string().label('course'),
-    startDate : Joi.date().format('YYYY-MM-DD').required().label('startDate must be of format YYYY-MM-DD'),
-    endDate : Joi.date().format('YYYY-MM-DD').required().label('endDate must be of format YYYY-MM-DD'),
+    startDate : Joi.date().format('YYYY-MM-DD').label('startDate must be of format YYYY-MM-DD'),
+    endDate : Joi.date().format('YYYY-MM-DD').label('endDate must be of format YYYY-MM-DD'),
 })
 
 const addCertificationSchema = Joi.object({

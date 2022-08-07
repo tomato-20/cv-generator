@@ -7,7 +7,9 @@
         "license": {
             "name": "Apache 2.0",
             "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
-        }
+        },
+        "host": "http://localhost:3430",
+        "basePath": "v1"
     },
     "servers": [
         {

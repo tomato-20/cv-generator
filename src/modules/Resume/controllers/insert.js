@@ -9,7 +9,8 @@ const {
     prepareExperiencesInsertData,
     prepareSkillInsertData,
     prepareUserProfilesInsertData
-} = require('../helpers/prepareResumeInsertData.db.helper')
+} = require('../helpers/prepareResumeInsertData.db.helper');
+const { StatusCodes } = require('http-status-codes');
 
 const insertResume = async (req, res, next) => {
     const Users = req.db.collection('users');
@@ -68,7 +69,7 @@ const insertResume = async (req, res, next) => {
         }
 
         // insert experiences
-        let experienceData = resumeInsertData.work;
+        let experienceData = resumeInsertData.experience;
         if (!!experienceData?.length) {
             promises.push(Experiences.insertMany(prepareExperiencesInsertData(experienceData, userId, resumeId)))
         }
@@ -94,7 +95,7 @@ const insertResume = async (req, res, next) => {
                 return resHelper.errorResponse(res, 'Cannot insert Data please try again')
             })
 
-        return resHelper.successResponse(res, 'resume data inserted')
+        return resHelper.successResponse(res, 'resume data inserted', '', StatusCodes.CREATED)
     } catch (error) {
         next(error)
     }

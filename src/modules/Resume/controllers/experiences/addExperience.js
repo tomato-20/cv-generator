@@ -21,7 +21,7 @@ const addExperience = async (req, res, next) => {
 
         const insertDbResult = await Experiences.insertOne({...prepareExperienceInsertData(req.body,userId,resumeId)})
 
-        return resHelper.successResponse(res,'Certification insert successfull', {id: insertDbResult.insertedId})
+        return resHelper.successResponse(res,'Experience insert successfull', {id: insertDbResult.insertedId}, 201)
 
     } catch (error) {
         next(error)
